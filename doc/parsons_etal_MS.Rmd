@@ -31,17 +31,16 @@ affiliation:
     state: Amazonas
     country: Brazil
 
-output: pdf_document
-  # html_document:
-  #   df_print: paged
-  # rmdformats::robobook: default
-# output: RmdTemplates::plos_article
-# csl: BES.csl
-# bibliography: library.bib
+output: 
+  bookdown::pdf_document2:
+    linenumbers: yes
+    toc: no
+csl: "journal-of-ecology.csl"
 # template: template.tex
 editor_options: 
   markdown: 
     wrap: sentence
+bibliography: references.bib
 ---
 
 # Abstract {.unnumbered}
@@ -55,18 +54,17 @@ I recommend improved data reporting procedures and archiving for future edge eff
 
 # Introduction {.unnumbered}
 
-Since habitat fragmentation was first identified as a threat to the integrity of ecosystems (Harris 1984, Wilcove et al. 1986), the ongoing transformation of landscapes has kept it in the theoretical and empirical spotlight (Brudvig et al. 2017, Resasco et al. 2017).
-The dynamics of populations, communities, and ecosystem processes are often dramatically altered in habitat fragments (Harrison and Bruna 1999, Zartman 2003, Fischer and Lindenmayer 2007, Laurance et al. 2011).
+Since habitat fragmentation was first identified as a threat to the integrity of ecosystems [@harrisFragmentedForestIsland1984; @wilcoveHabitatFragmentationTemperate1986], the ongoing transformation of landscapes has kept it in the theoretical and empirical spotlight [@brudvigEvaluatingConceptualModels2017; @resascoContributionTheoryExperiments2017]. The dynamics of populations, communities, and ecosystem processes are often dramatically altered in habitat fragments [@harrisonHabitatFragmentationLargescale1999; @zartmanHabitatFragmentationImpacts2003; @fischerLandscapeModificationHabitat2007; @lauranceFateAmazonianForest2011].
 These ecological changes observed in fragments -- especially forest fragments -- are often attributed to changes in abiotic factors such as temperature and relative humidity following fragment isolation (e.g., Bruna, Laurance).
 
 That abiotic conditions are severely altered in fragments is one of the most important paradigms to have emerged from the study of fragmented landscapes.
-Because changes in abiotic conditions are thought to be most severe at the fragment/matrix boundary and then dissipate towards the fragment interior they are frequently referred to as "edge effects" (Broadbent et al. 2008b).
+Because changes in abiotic conditions are thought to be most severe at the fragment/matrix boundary and then dissipate towards the fragment interior they are frequently referred to as "edge effects" [@broadbentForestFragmentationEdge2008].
 The magnitude of these edge effects is also thought to depend on a number of landscape attributes, including the size and orientation of the fragment, how long ago it was isolated, and the type, structure, and history of matrix.
 These generalizations, coupled with the presumed ubiquity of edge effects and their impacts, has led to the Edge Effects Paradigm playing a central role in the study of fragmented landscapes and strategies for their conservation.
 
 In 1995 Carolina Murcia wrote the first review of empirical studies testing for edge effects in fragments.
 She found that that the limited number of studies, their poor or limited design, and inconsistent methods made it impossible to draw general conclusions.
-"Although estimates of the intensity and impacts of edge effects in fragmented forests are urgently required", she concluded, "little can be done to ameliorate edge effects unless their mechanics are better understood".
+"Although estimates of the intensity and impacts of edge effects in fragmented forests are urgently required", she concluded, "little can be done to ameliorate edge effects unless their mechanics are better understood"[@murciaEdgeEffectsFragmented1995a].
 Her review ended with a call for researchers to conduct more comprehensive and long-term studies, emphasizing the importance of study design and methods that were relevant beyond a single study site and allowed for broader synthesis.
 
 Here we assess the how the studies and evidence underlying the edge effects paradigm have changed in the 25 years since the publication of Murcia's review.
@@ -87,7 +85,7 @@ We show that the paradigm of abiotic changes in habitat fragments continuous to 
 
 Our review is based on studies of fragmented landscapes that included data on any of the following seven abiotic variables -- air temperature (AT), relative humidity (RH), vapor pressure deficit (VPD), soil temperature (ST), soil moisture (SM), photosynthetically active radiation (PAR), or wind speed (WS); we chose these variables because preliminary surveys indicated they were the only ones reported in \>10 studies (Table 1).
 Because we were interested in edge-interior comparisons, studies had to report data on at least one of these variables from at least one location on the forest or fragment edge and at least one location in the forest of fragment interior.
-We excluded studies reporting data from plantations, as it is unclear the extent to which these habitats are environmentally similar to primary forest (Denyer et al. 2006); the one exception was a study in which the forest remnants were abandoned plantations of native tree species (Dilrukshi & Ranwala 2016).
+We excluded studies reporting data from plantations, as it is unclear the extent to which these habitats are environmentally similar to primary forest [@denyerBufferingNativeForest2006]; the one exception was a study in which the forest remnants were abandoned plantations of native tree species [@dilrukshiKirigalaForestFragments2016].
 
 We searched for potentially relevant studies by conducting a Web of Science search in March 2017 using the following search string:
 
@@ -106,9 +104,7 @@ For additional details, see Table X / Figure X.
 True replicates were those which are separated enough in space to constitute independence at the level the authors studied -- for instance, samples on the same fragment count as a single replicate when authors are testing hypotheses about fragments generally.]
 
 From each study we then extracted the mean and variance of the abiotic measurements at every point where they were collected.
-In some cases, these values were reported in the text or tables (e.g., Heithecker & Halpern 2007).
-When these data were presented in figures, we estimated the values using the WebPlotDigitizer software package (Copyright 2010-2017 Ankit Rohatgi).
-When results were reported as the percent change from a specific edge or interior location (e.g., Pohlman et al. 2007), we used the values reported for that reference location to calculate the mean and variance for the other ones.
+In some cases, these values were reported in the text or tables [e.g., @heitheckerEdgerelatedGradientsMicroclimate2007]. When these data were presented in figures, we estimated the values using the WebPlotDigitizer software package (Copyright 2010-2017 Ankit Rohatgi) <!--# update citation -->. When results were reported as the percent change from a specific edge or interior location [e.g., @pohlmanEdgeEffectsLinear2007], we used the values reported for that reference location to calculate the mean and variance for the other ones.
 Finally, we standardized the results across studies by calculating the percent difference between each point in a study and the reference location identified by authors as the forest or fragment interior.
 Because there was little consistency in how environmental data were reported, this was the only way to compare and synthesize results from different studies.
 
@@ -132,14 +128,11 @@ Although not all data were normally distributed, I used LMMs instead of generali
 All abiotic measures were natural log transformed before analysis.
 Models for this analysis used the percent difference from the value for "interior" as the dependent variable.
 The main effects were distance from the edge at which a measurement was recorded, the orientation of the edge at which measurements were taken, the edge age in years, and the type of matrix type abutting the edge (grass, agricultural field, savanna, plantation, shrubland, forest, sandscrub, young forest, clearcut, highway, or powerline).
-Article identity and transect identity were treated as a nested random effect, based on the recommendations of Harrison et al. (2018).
-I began by fitting a model that that included only the random effect of article, then one that also included distance from the edge.
-I then created increasingly complex models with the other dependent variables; to avoid overfitting, we restricted the models to three explanatory variables total as main effects, including interactions of distance and another measure (Table 5).
-I then used a corrected Akaike Information Criteria (AICc, Burnham and Anderson 2004) to rank the models and identify the one that provided the best fit to the data with the fewest parameters as the one with the lowest significant AICc value.
+Article identity and transect identity were treated as a nested random effect, based on the recommendations of @harrisonBriefIntroductionMixed2018. I began by fitting a model that that included only the random effect of article, then one that also included distance from the edge. I then created increasingly complex models with the other dependent variables; to avoid overfitting, we restricted the models to three explanatory variables total as main effects, including interactions of distance and another measure (Table 5). I then used a corrected Akaike Information Criteria [AICc, @burnhamMultimodelInferenceUnderstanding2004] to rank the models and identify the one that provided the best fit to the data with the fewest parameters as the one with the lowest significant AICc value.
 Although LMMs conducted in R do not indicate significance values, to establish which variables are likely contributing most to the effect seen, I obtained significances from the model's generalized linear equivalent, which does provide them.
 
 To compare variance differences between edge and interior sites, I recorded variances (including confidence intervals, standard error, etc.) reported in studies separately from their associated data points and fit them with a LOESS curve (Figure 5).
-All analyses were conducted using the R statistical programming language (R Core Development Team 2014) and the lme4 library (Bates et al. 2015).
+All analyses were conducted using the R statistical programming language [@rcoreteamLanguageEnvironmentStatistical2020] and the `lme4` package [@batesFittingLinearMixedEffects2015].
 
 # Results {.unnumbered}
 
@@ -204,16 +197,13 @@ A lack of data from boreal regions restricts any generalizations about edge pene
 
 # Discussion {.unnumbered}
 
-Half of the world's forest area is within 500 meters of an edge (Haddad et al. 2015); with sprawling development and agricultural interests, the situation is likely to get much worse.
-Abundances of 85% of all vertebrate species worldwide are influenced by edges, and species which thrive in interior conditions are more likely to be imperiled (Pfeifer et al. 2017).
+Half of the world's forest area is within 500 meters of an edge [@haddadHabitatFragmentationIts2015]; with sprawling development and agricultural interests, the situation is likely to get much worse. Abundances of 85% of all vertebrate species worldwide are influenced by edges, and species which thrive in interior conditions are more likely to be imperiled [@pfeiferCreationForestEdges2017].
 Although my compiled data does not show that edge effects exist globally for air temperature, relative humidity, soil temperature, and soil moisture, and that edge effects for vapor pressure deficit, wind speed, and light have a very short penetration distance (up to 25 meters), a more conservative estimate indicates that all abiotic edge effects dissipate by 100 meters.
-The undulating pattern of soil moisture worldwide resembles the results found by Camargo & Kapos (1995), who explain that it is likely due to vegetation changes and gap closure at edges over time.
+The undulating pattern of soil moisture worldwide resembles the results found by @camargoComplexEdgeEffects1995, who explain that it is likely due to vegetation changes and gap closure at edges over time.
 To my knowledge, this is the first study to show a consistent pattern in temperate regions as well as in the tropics.
 
 Even if the mere existence of some abiotic effects is in question, biotic edge effects show some clear trends.
-According to Pfeifer et al. (2017), peak vertebrate abundances are found only past 200 meters from the edge, much beyond our compiled edge distance of roughly 100 meters.
-While a larger body size is protective against edge impacts in the form of desiccation or overheating in amphibians and reptiles, in mammals the largest body sizes correlate to expanded ranges, restricting an animal's ability to complete its life cycle within a forest interior.
-Recently, collated data on thermal and edge tolerances across taxa been released with BIOFRAG in 2014 and GlobTherm in 2018 (Pfeifer et al. 2014; Bennett et al. 2018), making the process of determining correct methodology potentially easier for many researchers.
+According to @pfeiferCreationForestEdges2017, peak vertebrate abundances are found only past 200 meters from the edge, much beyond our compiled edge distance of roughly 100 meters. While a larger body size is protective against edge impacts in the form of desiccation or overheating in amphibians and reptiles, in mammals the largest body sizes correlate to expanded ranges, restricting an animal's ability to complete its life cycle within a forest interior. Recently, collated data on thermal and edge tolerances across taxa been released with BIOFRAG in 2014 and GlobTherm in 2018 [@pfeiferBIOFRAGNewDatabase2014; @bennettGlobThermGlobalDatabase2018], making the process of determining correct methodology potentially easier for many researchers.
 However, such a database does not yet exist for all abiotic edge effects; with my own collation and archival of the data available, I have made it possible to break down edge influences on the environmental conditions of edges and fragments by geographic location and study focus, benefiting the creation of more area-specific landscape models.
 This will greatly benefit the tropics especially, where a substantial portion of the work I analyzed was collected.
 
@@ -249,11 +239,8 @@ This is publication No. \_\_\_ in the BDFFP Technical Series.
 
 # References {.unnumbered}
 
-A reference list should be automatically created here.
-However it won't.
-Pandoc will place the list of references at the end of the document instead.
-There are no convenient solution for now to force Pandoc to do otherwise.
-The easiest way to get around this problem is to edit the LaTeX file created by Pandoc before compiling it again using the traditional LaTeX commands.
+::: {#refs}
+:::
 
 # Figure Legends {.unnumbered}
 
