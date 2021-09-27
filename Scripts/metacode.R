@@ -65,9 +65,9 @@ b
 popular.cities <- as.data.frame(head(sort(table(begin$Municipality), decreasing=T)))
 popular.cities
 #export mergedrefined7 to add simple latitude, first listed only
-write.csv(begin,"./Data/mergedrefined8.csv",row.names=FALSE)
+write_csv(begin,"./Data/mergedrefined8.csv")
+mergedrefined8 <- read_csv("./Data/mergedrefined8.csv")
 simplat <- mergedrefined8[,c(1,41)]
-
 
 
 #variables data ####
@@ -100,16 +100,20 @@ biomes$withdata <- c(24,14,1)
 biomes$percentwith <- round(((biomes$withdata/39)*100),digits=0)
 
 forbarplot <- biomes[,c(1,2,4)] %>% tidyr::gather(key="type",value="number",Freq:withdata)
- 
+
+biopal <- c("#33ccff","#000099")
+
 ggplot(forbarplot, x=Var1, y=number) + geom_col(aes(x=Var1,y=number,fill=type),position="identity") + scale_fill_manual(values=biopal,name="Abiotic Edge\nEffects",labels=c("Total","With data")) +
   labs(x="Biome type",y="Number of studies")
 
-biopal <- c("#33ccff","#000099")
+
 
 
 
 cited.biomes <- ggplot(begin, aes(x=broad, y=citations, fill=broad)) + geom_col() + theme_classic()
-cited.biomes + scale_fill_manual(values=biopal) + theme(legend.position = "none")
+cited.biomes +
+# scale_fill_manual(values=biopal) + #not enough colors
+  theme(legend.position = "none")
 
 ###citations ####
 #by biome
@@ -150,7 +154,7 @@ english.country <-  as.data.frame(sort(table(english$Country), decreasing=T))
 
 
 ##years/time ####
-hist(mergedrefined8$Year,breaks=10)
+hist(as.numeric(mergedrefined8$Year),breaks=10)
 mergedrefined8$Year <- as.factor(mergedrefined8$Year)
 years <- mergedrefined8 %>% count(Year)
 
@@ -167,14 +171,27 @@ mergedrefined8$start.date <- as.Date(mergedrefined8$start.date, format = "%m/%d/
 mergedrefined8$start.date.1 <- as.Date(mergedrefined8$start.date.1, format = "%m/%d/%Y")
 mergedrefined8$start.date.2 <- as.Date(mergedrefined8$start.date.2, format = "%m/%d/%Y")
 
-dates <- mergedrefined8[,c(1,17,18,19,71,72,73)]
-dates$days <- ifelse(!is.na(dates$start.date), dates$end.date - dates$start.date, 
-                     ifelse(!is.na(dates$start.date.1), (dates$end.date.1 - dates$start.date.1)+(dates$end.date.2 - dates$start.date.2),NA))
+#TODO: Broken from here down.
+
+# dates <- mergedrefined8[,c(1,17,18,19,71,72,73)]
+dates <- mergedrefined8 %>%
+  select(article.id, start.date, end.date, start.date.1, end.date.1, end.date.2, start.date.2, state) %>% 
+  mutate(days = case_when(
+    !is.na(start.date) ~ end.date - start.date,
+    !is.na(start.date.1) ~ end.date.1 - start.date.2 + end.date.2 - start.date.2,
+    TRUE ~ as.Date(NA) - as.Date(NA)
+  ))
+# dates$days <- ifelse(!is.na(dates$start.date), dates$end.date - dates$start.date, 
+#                      ifelse(!is.na(dates$start.date.1), (dates$end.date.1 - dates$start.date.1)+(dates$end.date.2 - dates$start.date.2),NA))
 dates$days[13] <- 12 #fix entry issue where end.date and start.date were swapped
 
-hist(dates$days)
-hist(dates$days,breaks=60,xlim=c(0,100))
-hist(dates$days, breaks=120,xlim=c(0,30))
+## These don't work because days isn't numeric (it's difftime)
+# hist(as.numeric(dates$days))
+# hist(dates$days,breaks=60,xlim=c(0,100))
+# hist(dates$days, breaks=120,xlim=c(0,30))
+
+ggplot(dates, aes(x = days)) +
+  geom_histogram(binwidth = 60)
 
 dates$year <- ifelse(!is.na(dates$end.date), substring(dates$end.date,1,4), 
                      substring(dates$end.date.2,1,4))
@@ -188,6 +205,7 @@ ggplot(dates, aes(x=days)) + geom_histogram(binwidth=20,color="black",fill="this
 
 
 ##archives? ####
+# TODO: For me it's 0 out of 71.  Check raw data to see where things went wrong
 count(mergedrefined8[mergedrefined8$arch.y.n == "Y",1]) #2 of 71
 
 ##journal ####
@@ -206,13 +224,19 @@ sort(table(mergedrefined8$replicates.habitat.2),decreasing=T)
 sort(table(mergedrefined8$replicates.habitat.3),decreasing=T)
 sort(table(mergedrefined8$replicates.habitat.4),decreasing=T)
 
-replicates <- mergedrefined8[,c(1,55,56,57,58,59)]
-replicates$article.id <- as.factor(replicates$article.id)
-replicates$replicates.habitat.1 <- as.factor(replicates$replicates.habitat.1)
-replicates$replicates.habitat.2 <- as.factor(replicates$replicates.habitat.2)
-replicates$replicates.habitat.3 <- as.factor(replicates$replicates.habitat.3)
-replicates$replicates.habitat.4 <- as.factor(replicates$replicates.habitat.4)
-replicates$replicates.habitat.5 <- as.factor(replicates$replicates.habitat.5)
+# replicates <- mergedrefined8[,c(1,55,56,57,58,59)]
+replicates <-
+  mergedrefined8 %>% 
+    select(article.id, starts_with("replicates.habitat."), reps.per.dist.1)
+replicates <-
+  replicates %>% 
+  mutate(across(c(article.id, starts_with("replicates.habitat.")), as.factor))
+# replicates$article.id <- as.factor(replicates$article.id)
+# replicates$replicates.habitat.1 <- as.factor(replicates$replicates.habitat.1)
+# replicates$replicates.habitat.2 <- as.factor(replicates$replicates.habitat.2)
+# replicates$replicates.habitat.3 <- as.factor(replicates$replicates.habitat.3)
+# replicates$replicates.habitat.4 <- as.factor(replicates$replicates.habitat.4)
+# replicates$replicates.habitat.5 <- as.factor(replicates$replicates.habitat.5)
 reps <- replicates %>% count(replicates.habitat.1)
 
 #instruments ####

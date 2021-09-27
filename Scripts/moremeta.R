@@ -11,6 +11,8 @@ library(lme4) #Version 1.1-14
 library(MASS) #Version 7.3-47
 library(readr) #Version 1.1.1
 library(MuMIn)
+library(car)
+library(ggpubr)
 
 AT <- read_csv("./Data/AT_seg.csv")
 
@@ -23,11 +25,12 @@ length(unique(AT$article.id))
 
 #distances
 distances <- as.data.frame(table(AT$dist))
-mean(interiors$dist)
+
 #find interior point
 interiors <- AT %>% group_by(article.id) %>% summarize(dist = max(dist))
 top <- AT %>% group_by(article.id,segment_n) %>% slice(which.max(dist))
 zero <- AT %>% group_by(article.id, segment_n) %>% slice(which(dist==0))
+mean(interiors$dist)
 
 sep <- merge(AT, top[,c(1,2,3,4,5)], by = c("article.id","segment_n"))
 colnames(sep)[c(3,4,5,16,17,18)] <- c("just.temp","just.dist","just.diff","max.airtemp","max.dist", "max.diff")
@@ -159,14 +162,22 @@ noint$idseg <- paste(noint[,1],noint[,2])
 
 #graphs
 #relative to interior point
-relative <- ggplot(subset(short,!is.na(percentrh_diff)), aes(x=just.dist, y=percentrh_diff))
+# relative <- ggplot(subset(short,!is.na(percentrh_diff)), aes(x=just.dist, y=percentrh_diff))
+# relative + geom_point() + geom_smooth(method="loess",formula=y~x) + coord_cartesian(ylim=c(-30,5),xlim=c(-10,250)) +
+#   scale_x_continuous(breaks=pretty(short$just.dist,n=30))
+# #average of values based on article.id
+# avg.id <- ggplot(subset(oneonlyrh,!is.na(percentrh_diff)), aes(x=just.dist,y = percentrh_diff))
+# avg.id + geom_point() + geom_smooth(method="loess",formula = y~x) + coord_cartesian(ylim=c(-30,5),xlim=c(-10,250)) + 
+#   scale_x_continuous(breaks=pretty(short$just.dist,n=30)) + scale_y_continuous(breaks=pretty(short$percentrh_diff,n=10))
+
+# The code above was broken because `percentrh_diff` isn't a column in `short`.
+relative <- ggplot(subset(sep,!is.na(percentrh_diff)), aes(x=just.dist, y=percentrh_diff))
 relative + geom_point() + geom_smooth(method="loess",formula=y~x) + coord_cartesian(ylim=c(-30,5),xlim=c(-10,250)) +
   scale_x_continuous(breaks=pretty(short$just.dist,n=30))
 #average of values based on article.id
 avg.id <- ggplot(subset(oneonlyrh,!is.na(percentrh_diff)), aes(x=just.dist,y = percentrh_diff))
-avg.id + geom_point() + geom_smooth(method="loess",formula = y~x) + coord_cartesian(ylim=c(-30,5),xlim=c(-10,250)) + 
+avg.id + geom_point() + geom_smooth(method="loess",formula = y~x) + coord_cartesian(ylim=c(-30,5),xlim=c(-10,250)) +
   scale_x_continuous(breaks=pretty(short$just.dist,n=30)) + scale_y_continuous(breaks=pretty(short$percentrh_diff,n=10))
-
 
 
 ###########################soil temperature ####
@@ -217,7 +228,8 @@ noint$idseg <- paste(noint[,1],noint[,2])
 
 #graphs
 #relative to interior point
-relative <- ggplot(subset(short,!is.na(percentst_diff)), aes(x=just.dist, y=percentst_diff))
+# relative <- ggplot(subset(short,!is.na(percentst_diff)), aes(x=just.dist, y=percentst_diff))
+relative <- ggplot(subset(sep,!is.na(percentst_diff)), aes(x=just.dist, y=percentst_diff))
 relative + geom_point() + geom_smooth(method="loess",formula=y~x) + coord_cartesian(ylim=c(-20,90),xlim=c(-10,250)) +
   scale_x_continuous(breaks=pretty(short$just.dist,n=30))
 #average of values based on article.id
@@ -274,7 +286,9 @@ noint$idseg <- paste(noint[,1],noint[,2])
 
 #graphs
 #relative to interior point
-relative <- ggplot(subset(short,!is.na(percentsm_diff)), aes(x=just.dist, y=percentsm_diff))
+# relative <- ggplot(subset(short,!is.na(percentsm_diff)), aes(x=just.dist, y=percentsm_diff))
+relative <- ggplot(subset(short.sm,!is.na(percentsm_diff)), aes(x=just.dist, y=percentsm_diff))
+
 relative + geom_point() + geom_smooth(method="loess",formula = y~x) + coord_cartesian(xlim=c(-10,250)) +
   scale_x_continuous(breaks=pretty(short$just.dist,n=30))
 #average of values based on article.id
@@ -339,7 +353,7 @@ noint$idseg <- paste(noint[,1],noint[,2])
 
 #graphs
 #relative to interior point
-relative <- ggplot(subset(short,!is.na(percentPAR_diff)), aes(x=just.dist, y=percentPAR_diff))
+relative <- ggplot(subset(short.par,!is.na(percentPAR_diff)), aes(x=just.dist, y=percentPAR_diff))
 relative + geom_point() + geom_smooth(method="loess",formula = y~x) + coord_cartesian(xlim=c(-10,250)) +
   scale_x_continuous(breaks=pretty(short$just.dist,n=30))
 
@@ -392,7 +406,7 @@ noint$idseg <- paste(noint[,1],noint[,2])
 
 #graphs
 #relative to interior point
-relative <- ggplot(subset(short,!is.na(percentVPD_diff)), aes(x=just.dist, y=percentVPD_diff))
+relative <- ggplot(subset(short.vpd,!is.na(percentVPD_diff)), aes(x=just.dist, y=percentVPD_diff))
 relative + geom_point() + geom_smooth(method="loess",formula = y~x) + coord_cartesian(xlim=c(-10,250)) +
   scale_x_continuous(breaks=pretty(short$just.dist,n=30))
 #average of values based on article.id
@@ -455,7 +469,7 @@ noint$idseg <- paste(noint[,1],noint[,2])
 
 #graphs
 #relative to interior point
-relative <- ggplot(subset(short,!is.na(percentws_diff)), aes(x=just.dist, y=percentws_diff))
+relative <- ggplot(subset(short.ws,!is.na(percentws_diff)), aes(x=just.dist, y=percentws_diff))
 relative + geom_point() + geom_smooth(method="loess",formula = y~x) + coord_cartesian(xlim=c(-10,250)) +
   scale_x_continuous(breaks=pretty(short$just.dist,n=30))
 #average of values based on article.id
@@ -479,8 +493,8 @@ full <- data.frame(combined5[!is.na(combined5[,6]) & !is.na(combined5[,16]) & !i
   !is.na(combined5[,31]),])
   
 #export combined dataset
-write.csv(combined5,"./Outputs/vardata.csv",row.names = F)
-
+write_csv(combined5,"./Outputs/vardata.csv")
+vardata <- read_csv("./Outputs/vardata.csv")
 #number articles with data = 39
 length(unique(vardata$article.id))
 
@@ -814,7 +828,7 @@ aea <- ggplot(smrem,aes(x = just.dist)) +
 ########initial modeling ####
 
 ## READ IN
-read.csv("./Outputs/vardata.csv")
+vardata <- read.csv("./Outputs/vardata.csv")
 
 #distributions not normal, log after + 1 to remove all negative
 #normalize everything
@@ -836,7 +850,8 @@ forglmm$edge_age_years <- log(forglmm$edge_age_years) #log years to linearize re
 
 
 ##GLM
-sum(forglm[(!is.na(forglm$percentws_diff) & !is.na(forglm$edge_orient.f)),]) #check, no rows contain both wind and orientation
+# forglm is missing.  Not sure how to fix.  Maybe replace with forglmm? - ERS
+# sum(forglm[(!is.na(forglm$percentws_diff) & !is.na(forglm$edge_orient.f)),]) #check, no rows contain both wind and orientation
 
 #is effect due to missing data?
 nrow(forglmm[!is.na(forglmm$edge_age_years),])/900
@@ -856,12 +871,26 @@ stglm.sing <-  glm(percentst_diff ~ just.dist,family = gaussian, data = forglmm)
 parglm.sing <- glm(percentPAR_diff ~ just.dist,family = gaussian, data = forglmm)
 wsglm.sing <-  glm(percentws_diff ~ just.dist,family = gaussian, data = forglmm)
 
+
 #is a log curve a better predictor?
 propor <- vardata
 propor$atpro <- propor$percent_diff/100
 logfit <- lm(atpro[just.dist >=0]~log1p(just.dist[just.dist >= 0]), data = propor)
+
+atrange <- seq(-1,1,0.1)
+rhrange <- seq(-0.5,0.5,0.1)
+smrange <- seq(-1,1,0.1)
+parrange <- seq(-2.4,4,0.2)
+strange <- seq(-0.5,1,0.1)
+vpdrange <- seq(-1,2,0.2)
+wsrange <- seq(-1,2.2,0.2)
+distrange <- seq(-10,500,1) #the second overwrites the first, not sure which is correct - ERS
+distrange <- seq(0,500,1)
+
+#TODO: replace plot code with ggplot2 and broom code:
+
 newy <- predict(logfit,list(just.dist=distrange),interval="confidence")
-matlines(distrange,newy,lwd=2)
+# matlines(distrange,newy,lwd=2) #not sure what this does, but its broken -Eric
 regfit <- lm(atpro~just.dist,data=propor)
 
 newnewy <- predict(logfit,list(just.dist=distrange))
@@ -872,15 +901,7 @@ lines(distrange,regy,col="green")
 # yup.
 
 
-atrange <- seq(-1,1,0.1)
-rhrange <- seq(-0.5,0.5,0.1)
-smrange <- seq(-1,1,0.1)
-parrange <- seq(-2.4,4,0.2)
-strange <- seq(-0.5,1,0.1)
-vpdrange <- seq(-1,2,0.2)
-wsrange <- seq(-1,2.2,0.2)
-distrange <- seq(-10,500,1)
-distrange <- seq(0,500,1)
+
 
 aty <- predict(atglm.sing,list(just.dist = distrange),type="response")
 plot(forglmm$just.dist,forglmm$percent_diff,pch=1,xlab="Distance from edge",ylab="Change in AT compared to interior point")
@@ -898,10 +919,10 @@ smy <- predict(smglm.sing,list(just.dist = distrange),type="response")
 plot(forglmm$just.dist,forglmm$percentsm_diff,pch=1,xlab="Distance from edge",ylab="Change in SM compared to interior point")
 lines(distrange,smy)
 
-
+# forglm is missing. not sure how to fix
 sty <- predict(stglm.sing,list(just.dist = distrange),type="response")
-plot(forglm$just.dist,forglm$percentst_diff,pch=1,xlab="Distance from edge",ylab="Change in ST compared to interior point")
-lines(distrange,sty)
+# plot(forglm$just.dist,forglm$percentst_diff,pch=1,xlab="Distance from edge",ylab="Change in ST compared to interior point")
+# lines(distrange,sty)
 
 
 pary <- predict(parglm.sing,list(just.dist = distrange),type="response")
@@ -1030,10 +1051,10 @@ anova(atglm,atglm2)
 
 qqp(vardata$percent_diff, "lnorm")
 qqp(vardata$percent_diff, "norm")
-nbinom <- fitdistr(na.exclude(vardata$percent_diff), "Negative Binomial")
-qqp(a.exclude(vardata$percent_diff), "nbinom", size = nbinom$estimate[[1]], mu = nbinom$estimate[[2]])
-poisson <- fitdistr(na.exclude(vardata$percent_diff), "Poisson")
-qqp(vardata$percent_diff, "pois", poisson$estimate)
+# nbinom <- fitdistr(na.exclude(vardata$percent_diff), "Negative Binomial") #NB can't include negative numbers!
+# qqp(a.exclude(vardata$percent_diff), "nbinom", size = nbinom$estimate[[1]], mu = nbinom$estimate[[2]]) #not sure what a.exclude() is from
+poisson <- fitdistr(na.exclude(vardata$percent_diff), "Poisson") #wait, poisson can't be negative numbers either, what's going on here?
+qqp(vardata$percent_diff, "pois", lambda = poisson$estimate)
 
 bestat <- glm(percent_diff ~ just.dist.l, data = matglmm)
 
@@ -1231,8 +1252,8 @@ wsglm2 <- lmer(percentws_diff ~ just.dist.l + (1|article.id),
                data = matglmm, REML=F)
 wsglm3 <- lmer(percentws_diff ~ just.dist.l + matrix_type.f + (1|article.id),
                data = matglmm, REML=F) #2nd
-wsglm4 <- lmer(percentws_diff ~ just.dist.l + matrix_type.f + edge_orient.f + (1|article.id),
-               data = matglmm, REML=F) #does not converge
+# wsglm4 <- lmer(percentws_diff ~ just.dist.l + matrix_type.f + edge_orient.f + (1|article.id),
+#                data = matglmm, REML=F) #does not converge
 #wsglm5 <- glm(percentws_diff ~ just.dist.l + edge_age_years + matrix_type.f, #best
 #              family = gaussian, data = matglmm) #needs 2 or more levels, not enough data
 wsglm6 <- lmer(percentws_diff ~ just.dist.l * matrix_type.f + (1|article.id),
@@ -1947,9 +1968,11 @@ heatpointsWS <- do.call(rbind,Map(data.frame, distance = distancecats, WS = newp
 write.csv(heatpointsWS,"./Outputs/heatpointsWS.csv",row.names = FALSE)
 
 
+mergedrefined8 <- read_csv("./Data/mergedrefined8.csv")
 
 #find actual abiota measurements ####
-biomes <- mergedrefined8[,c(1,96)]
+# biomes <- mergedrefined8[,c(1,96)]  #column 96 doesn't exist, just a guess:
+biomes <- mergedrefined8 %>% dplyr::select(article.id, biome, broad)
 
 #AT
 #merge with biomes
