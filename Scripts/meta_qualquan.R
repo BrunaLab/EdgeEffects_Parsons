@@ -24,7 +24,7 @@ boreal <- quanonly[quanonly$broad == "boreal",]
 temperate <- quanonly[quanonly$broad == "temperate",]
 
 #citations, with data ####
-quanbroad <- unique(quanonly[,c(1,36,126)])
+quanbroad <- unique(quanonly[,c(1,36,126)]) #errors
 length(unique(quanbroad$article.id[quanbroad$broad=="tropical"]))
 length(unique(quanbroad$article.id[quanbroad$broad=="temperate"]))
 length(unique(quanbroad$article.id[quanbroad$broad=="boreal"]))

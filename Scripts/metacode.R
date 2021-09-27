@@ -1,5 +1,7 @@
 #Qualitative data only
 
+# This one is somewhat broken
+
 library(reshape2) #Version 0.8.7
 library(ggplot2) #Version 2.2.1
 library(forcats) #Version 0.2.0
@@ -97,7 +99,7 @@ biomes$percent <- round(((biomes$Freq/71)*100), digits = 0)
 biomes$withdata <- c(24,14,1)
 biomes$percentwith <- round(((biomes$withdata/39)*100),digits=0)
 
-forbarplot <- biomes[,c(1,2,4)] %>% gather(key="type",value="number",Freq:withdata)
+forbarplot <- biomes[,c(1,2,4)] %>% tidyr::gather(key="type",value="number",Freq:withdata)
  
 ggplot(forbarplot, x=Var1, y=number) + geom_col(aes(x=Var1,y=number,fill=type),position="identity") + scale_fill_manual(values=biopal,name="Abiotic Edge\nEffects",labels=c("Total","With data")) +
   labs(x="Biome type",y="Number of studies")
