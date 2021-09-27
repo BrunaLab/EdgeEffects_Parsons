@@ -64,7 +64,7 @@ These generalizations, coupled with the presumed ubiquity of edge effects and th
 
 In 1995 Carolina Murcia wrote the first review of empirical studies testing for edge effects in fragments.
 She found that that the limited number of studies, their poor or limited design, and inconsistent methods made it impossible to draw general conclusions.
-"Although estimates of the intensity and impacts of edge effects in fragmented forests are urgently required", she concluded, "little can be done to ameliorate edge effects unless their mechanics are better understood"[@murciaEdgeEffectsFragmented1995a].
+"Although estimates of the intensity and impacts of edge effects in fragmented forests are urgently required", she concluded, "little can be done to ameliorate edge effects unless their mechanics are better understood"[@murciaEdgeEffectsFragmented1995].
 Her review ended with a call for researchers to conduct more comprehensive and long-term studies, emphasizing the importance of study design and methods that were relevant beyond a single study site and allowed for broader synthesis.
 
 Here we assess the how the studies and evidence underlying the edge effects paradigm have changed in the 25 years since the publication of Murcia's review.
