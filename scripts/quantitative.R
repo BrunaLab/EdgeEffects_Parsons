@@ -1,40 +1,45 @@
 #Quantitative data only
-
-#Broken
-
-library(dplyr) #Version 0.7.4
-library(tidyr) #Version 0.7.2
-library(ggplot2) #Version 2.2.1
-library(stringr) #Version 1.2.0
+#somewhat broken
+library(tidyverse)
+# library(dplyr) #Version 0.7.4
+# library(tidyr) #Version 0.7.2
+# library(ggplot2) #Version 2.2.1
+# library(stringr) #Version 1.2.0
 library(gridExtra) #Version 2.3
 library(lme4) #Version 1.1-14
 library(MASS) #Version 7.3-47
-library(readr) #Version 1.1.1
+# library(readr) #Version 1.1.1
 library(MuMIn)
 library(car)
 library(ggpubr)
+library(here)
 
-AT <- read_csv("./Data/AT_seg.csv")
+AT <- read_csv(here("Data", "AT_seg.csv"))
 
 ###########air temperature ####
-rem <- c(-30,-25,-20,-15)
-AT <- AT[!AT$dist %in% rem,] #all -30,-20,-15 distances unnecessary
+AT <- AT %>% filter(!dist %in% c(-30,-25,-20,-15)) #all -30,-20,-15 distances unnecessary
 
 length(unique(AT$article.id))
 
-
 #distances
-distances <- as.data.frame(table(AT$dist))
+count(AT, dist)
 
 #find interior point
 interiors <- AT %>% group_by(article.id) %>% summarize(dist = max(dist))
 top <- AT %>% group_by(article.id,segment_n) %>% slice(which.max(dist))
-zero <- AT %>% group_by(article.id, segment_n) %>% slice(which(dist==0))
+# zero <- AT %>% group_by(article.id, segment_n) %>% slice(which(dist==0))
 mean(interiors$dist)
 
-sep <- merge(AT, top[,c(1,2,3,4,5)], by = c("article.id","segment_n"))
-colnames(sep)[c(3,4,5,16,17,18)] <- c("just.temp","just.dist","just.diff","max.airtemp","max.dist", "max.diff")
-
+top <- top %>%
+  dplyr::select(
+    article.id,
+    segment_n,
+    max.airtemp = air_temp,
+    max.dist = dist,
+    max.diff = temp_diff
+  )
+sep <- left_join(AT, top, by = c("article.id", "segment_n")) %>% 
+  rename(just.temp = air_temp, just.dist = dist, just.diff = temp_diff)
 
 #find temp differences
 #so <- sep$article.id == 71
@@ -88,26 +93,49 @@ wide <- clip %>% spread(dist,air_temp,fill=NA,convert=FALSE)
 #simple graphs
 #simple AT
 ggplot(AT, aes(x=dist, y=air_temp)) + geom_point()
-ggplot(short, aes(x=just.dist, y=full_diff)) + geom_point(aes(color=article.id)) + 
-  geom_smooth(method = "auto") + scale_x_continuous(breaks=pretty(short$just.dist,n=40)) + scale_y_continuous(breaks=pretty(short$full_diff,n=10)) + 
-  coord_cartesian(ylim=c(-5,10),xlim=c(-10,200)) + geom_hline(yintercept = 0)
-#by each plot per article
-plot <- ggplot(short, aes(x=just.dist, y=full_diff,group=idseg)) + scale_x_continuous(breaks=pretty(short$just.dist,n=40)) + 
-  scale_y_continuous(breaks=pretty(short$full_diff,n=10)) + coord_cartesian(ylim=c(-5,10),xlim=c(-10,200))
-plot + geom_line(color = "blue",alpha=.2)
+ggplot(short, aes(x=just.dist, y=full_diff)) +
+  geom_point(aes(color=article.id), show.legend = FALSE) + 
+  geom_smooth(method = "auto") +
+  scale_x_continuous(breaks=pretty(short$just.dist,n=40)) + 
+  scale_y_continuous(breaks=pretty(short$full_diff,n=10)) + 
+  coord_cartesian(ylim=c(-5,10),xlim=c(-10,200)) +
+  geom_hline(yintercept = 0)
+
+#by each plot per article (ERS-I don't get this)
+ggplot(short, aes(x = just.dist, y = full_diff, group = idseg)) +
+  scale_x_continuous(breaks = pretty(short$just.dist, n = 40)) +
+  scale_y_continuous(breaks = pretty(short$full_diff, n = 10)) +
+  coord_cartesian(ylim = c(-5, 10), xlim = c(-10, 200)) +
+  geom_line(color = "blue", alpha = .2)
+
 #relative to interior point
-relative <- ggplot(subset(short,!is.na(percent_diff)), aes(x=just.dist, y=percent_diff))
-relative + geom_point() + geom_smooth(method="loess",formula=y~x) + coord_cartesian(ylim=c(-10,100),xlim=c(-10,200)) +
+ggplot(subset(short,!is.na(percent_diff)), aes(x=just.dist, y=percent_diff)) +
+  geom_point() +
+  geom_smooth(method="loess",formula=y~x) +
+  coord_cartesian(ylim=c(-10,100),xlim=c(-10,200)) +
   scale_x_continuous(breaks=pretty(short$just.dist,n=30))
+
 #without interior points
-no_interior <- ggplot(subset(noint,!is.na(percent_diff)), aes(x=just.dist, y=percent_diff))
-no_interior + geom_point() + geom_smooth(method="loess",formula=y~x) + coord_cartesian(ylim=c(-10,90),xlim=c(-10,140)) +
-  scale_x_continuous(breaks=pretty(short$just.dist,n=30)) + scale_y_continuous(breaks=pretty(short$percent_diff,n=10)) + xlab("Distance") +
-  ylab("% difference from interior") + geom_point(data=data.frame(x=104,y=0),aes(x,y),color="red",size=4)
+ggplot(subset(noint, !is.na(percent_diff)), aes(x = just.dist, y = percent_diff)) +
+  geom_point() +
+  geom_smooth(method = "loess", formula = y ~ x) +
+  coord_cartesian(ylim = c(-10, 90), xlim = c(-10, 140)) +
+  scale_x_continuous(breaks = pretty(short$just.dist, n = 30)) +
+  scale_y_continuous(breaks = pretty(short$percent_diff, n = 10)) +
+  xlab("Distance") +
+  ylab("% difference from interior") +
+  geom_point(data = data.frame(x = 104, y = 0), #the fuck is this big red point?
+             aes(x, y),
+             color = "red",
+             size = 4)
+
 #average of values based on article.id
-avg.id <- ggplot(subset(oneonly,!is.na(percent_diff)), aes(x=just.dist,y = percent_diff))
-avg.id + geom_point() + geom_smooth(method="loess",formula = y~x) + coord_cartesian(ylim=c(-10,100),xlim=c(-10,200)) + 
-  scale_x_continuous(breaks=pretty(short$just.dist,n=30)) + scale_y_continuous(breaks=pretty(short$percent_diff,n=10))
+ggplot(subset(oneonly, !is.na(percent_diff)), aes(x = just.dist, y = percent_diff)) +
+  geom_point() +
+  geom_smooth(method = "loess", formula = y ~ x) +
+  coord_cartesian(ylim = c(-10, 100), xlim = c(-10, 200)) +
+  scale_x_continuous(breaks = pretty(short$just.dist, n = 30)) +
+  scale_y_continuous(breaks = pretty(short$percent_diff, n = 10))
  
 
 #######################relative humidity ####
