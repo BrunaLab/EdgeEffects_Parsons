@@ -18,11 +18,11 @@ All data extracted from peer-reviewed studies.
 
 These files are manipulated in:
 
--   **metacode.r** for qualtitative data only (how/where/when/by whom were the data collected? which journals? etc.)
+-   **qualitative.R** for qualtitative data only (how/where/when/by whom were the data collected? which journals? etc.)
 
--   **moremeta.r** for quantitative data only (which measurements were taken?)
+-   **quantitative.R** for quantitative data only (which measurements were taken?)
 
--   **meta_qualquan.r** mixture of qualitative and quantitative data (did the methods influence measurements?)
+-   **qualquant.R** mixture of qualitative and quantitative data (did the methods influence measurements?)
 
 Relevant visualizations are included with their data type/s.
 
