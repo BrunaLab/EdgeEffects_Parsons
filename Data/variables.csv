@@ -1,0 +1,19 @@
+﻿variable,measurements,included
+Air temperature,Air temperature (AT),TRUE
+Air temperature,dewpoint temperature (DT),FALSE
+Humidity,Humidity (H),FALSE
+Humidity,precipitation (PT),FALSE
+Humidity,relative humidity (RH),TRUE
+Humidity, throughfall precipitation (TP),FALSE
+Humidity,vapor pressure deficit (VPD),TRUE
+Soil properties,Soil temperature (ST),TRUE
+Soil properties,soil humidity (SH),FALSE
+Soil properties,soil moisture (SM),TRUE
+Surface,Surface temperature (SFT),FALSE
+Light,Light incidence (LI),FALSE
+Light,light intensity (LIT),FALSE
+Light, lux (LUX),FALSE
+Light,photosynthetic active radiation (PAR),TRUE
+Light,photosynthetic photon flux density (PPFD),FALSE
+Light,solar radiation flux density (SRFD),FALSE
+Wind,Wind speed (WS),TRUE

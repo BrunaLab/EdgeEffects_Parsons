@@ -1,0 +1,368 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  12pt,
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ % allow citations to break across lines
+ \let\@cite@ofmt\@firstofone
+ % avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
+  \fi
+  % set entry spacing
+  \setlength{\itemsep}{#2\baselineskip}}}
+ {\end{list}}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyfoot{}
+\fancyhead[L]{APCs and Author Diversity (Supplement)}
+\fancyhead[R]{p. \thepage}
+\usepackage{setspace}
+\usepackage{parskip}
+\usepackage{pdflscape}
+\newcommand{\blandscape}{\begin{landscape}}
+\newcommand{\elandscape}{\end{landscape}}
+\usepackage{caption}
+\DeclareCaptionLabelFormat{Sformat}{#1 S#2}
+\captionsetup[table]{labelformat=Sformat}
+\captionsetup[figure]{labelformat=Sformat}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Piublication Updates Since Review},
+  pdfauthor={\_\_\_\_\_ and E. M. Bruna},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Piublication Updates Since Review}
+\author{\_\_\_\_\_ and E. M. Bruna}
+\date{}
+
+\begin{document}
+\maketitle
+
+The following articles have been published since Simon's Thesis
+
+\section*{References}\label{references}
+\addcontentsline{toc}{section}{References}
+
+\phantomsection\label{refs}
+\begin{CSLReferences}{1}{0}
+\bibitem[\citeproctext]{ref-AmazonianSecondaryForests}
+{``Amazonian Secondary Forests Are Greatly Reducing Fragmentation and
+Edge Exposure in Old-Growth Forests - {IOPscience}.''} n.d. Accessed May
+30, 2025.
+\url{https://iopscience.iop.org/article/10.1088/1748-9326/ad039e/meta}.
+
+\bibitem[\citeproctext]{ref-andersonWeakEdgeEffects2022}
+Anderson, Jake A., Colin J. McClean, Sarah Sim, Nathalie Pettorelli,
+Ahmad Jelling, Joseph Tangah, and Jane K. Hill. 2022. {``Weak Edge
+Effects on Trees in {Bornean} Rainforest Remnants Bordering Oil Palm.''}
+\emph{Biotropica} 54 (4): 921--32.
+\url{https://doi.org/10.1111/btp.13115}.
+
+\bibitem[\citeproctext]{ref-arroyo-rodriguezDoesForestFragmentation2017}
+Arroyo-Rodríguez, Víctor, Romeo A. Saldaña-Vázquez, Lenore Fahrig, and
+Bráulio A. Santos. 2017. {``Does Forest Fragmentation Cause an Increase
+in Forest Temperature?''} \emph{Ecological Research} 32 (1): 81--88.
+\url{https://doi.org/10.1007/s11284-016-1411-6}.
+
+\bibitem[\citeproctext]{ref-atkinsEffectsForestStructural2023}
+Atkins, Jeff W., Alexey Shiklomanov, Kayla C. Mathes, Ben Bond-Lamberty,
+and Christopher M. Gough. 2023. {``Effects of Forest Structural and
+Compositional Change on Forest Microclimates Across a Gradient of
+Disturbance Severity.''} \emph{Agricultural and Forest Meteorology} 339
+(August): 109566. \url{https://doi.org/10.1016/j.agrformet.2023.109566}.
+
+\bibitem[\citeproctext]{ref-bauerEdgeEffectsAmazon2024}
+Bauer, Luise, Andreas Huth, André Bogdanowski, Michael Müller, and Rico
+Fischer. 2024. {``Edge {Effects} in {Amazon} {Forests}: {Integrating}
+{Remote} {Sensing} and {Modelling} to {Assess} {Changes} in {Biomass}
+and {Productivity}.''} \emph{Remote Sensing} 16 (3): 501.
+\url{https://doi.org/10.3390/rs16030501}.
+
+\bibitem[\citeproctext]{ref-bernaschiniMicroclimaticEdgeEffects2021}
+Bernaschini, María Laura, María Rosa Rossetti, Graciela Valladares, and
+Adriana Salvo. 2021. {``Microclimatic Edge Effects in a Fragmented
+Forest: Disentangling the Drivers of Ecological Processes in
+Plant-Leafminer-Parasitoid Food Webs.''} \emph{Ecological Entomology} 46
+(5): 1047--58. \url{https://doi.org/10.1111/een.13040}.
+
+\bibitem[\citeproctext]{ref-blanchardUAVLidarRevealsThat2023}
+Blanchard, Grégoire, Nicolas Barbier, Ghislain Vieilledent, Thomas
+Ibanez, Vanessa Hequet, Stéphane McCoy, and Philippe Birnbaum. 2023.
+{``{UAV}-{Lidar} Reveals That Canopy Structure Mediates the Influence of
+Edge Effects on Forest Diversity, Function and Microclimate.''}
+\emph{Journal of Ecology} 111 (7): 1411--27.
+\url{https://doi.org/10.1111/1365-2745.14105}.
+
+\bibitem[\citeproctext]{ref-defrenneForestMicroclimatesClimate2021}
+De Frenne, Pieter, Jonathan Lenoir, Miska Luoto, Brett R. Scheffers,
+Florian Zellweger, Juha Aalto, Michael B. Ashcroft, et al. 2021.
+{``Forest Microclimates and Climate Change: {Importance}, Drivers and
+Future Research Agenda.''} \emph{Global Change Biology} 27 (11):
+2279--97. \url{https://doi.org/10.1111/gcb.15569}.
+
+\bibitem[\citeproctext]{ref-depauwUrbanForestMicroclimates2023}
+De Pauw, Karen, Leen Depauw, Kim Calders, Steven Caluwaerts, Sara A. O.
+Cousins, Emiel De Lombaerde, Martin Diekmann, et al. 2023. {``Urban
+Forest Microclimates Across Temperate {Europe} Are Shaped by Deep Edge
+Effects and Forest Structure.''} \emph{Agricultural and Forest
+Meteorology} 341 (October): 109632.
+\url{https://doi.org/10.1016/j.agrformet.2023.109632}.
+
+\bibitem[\citeproctext]{ref-depauwForestUnderstoreyCommunities2022}
+De Pauw, Karen, Pieter Sanczuk, Camille Meeussen, Leen Depauw, Emiel De
+Lombaerde, Sanne Govaert, Thomas Vanneste, et al. 2022. {``Forest
+Understorey Communities Respond Strongly to Light in Interaction with
+Forest Structure, but Not to Microclimate Warming.''} \emph{New
+Phytologist} 233 (1): 219--35. \url{https://doi.org/10.1111/nph.17803}.
+
+\bibitem[\citeproctext]{ref-diasStructuralEnvironmentalVariability2021}
+Dias, Pb, Lp Gomes, Rm Callegaro, Fa Carvalho, and Hm Dias. 2021.
+{``Structural and {Environmental} {Variability} from the {Edge} to the
+{Interior} of an {Atlantic} {Forest} {Remnant} in {Brazil}.''}
+\emph{Journal of Tropical Forest Science} 33 (3): 308--22.
+\url{https://www.jstor.org/stable/27039920}.
+
+\bibitem[\citeproctext]{ref-garveyDivergingPatternsForest2022}
+Garvey, Sarah M., Pamela H. Templer, Erin A. Pierce, Andrew B. Reinmann,
+and Lucy R. Hutyra. 2022. {``Diverging Patterns at the Forest Edge:
+{Soil} Respiration Dynamics of Fragmented Forests in Urban and Rural
+Areas.''} \emph{Global Change Biology} 28 (9): 3094--3109.
+\url{https://doi.org/10.1111/gcb.16099}.
+
+\bibitem[\citeproctext]{ref-gasperiniEffectsMacroclimateMicroclimate2023}
+Gasperini, Cristina. 2023. {``The Effects of Macroclimate and
+Microclimate on Soil Seed Banks in Temperate Forests.''} Dissertation,
+Ghent University.
+\url{http://hdl.handle.net/1854/LU-01HBR5QBZ1YCK0QCNJX8EG7G72}.
+
+\bibitem[\citeproctext]{ref-gilbertMicroclimateComplexitiesTrailing2022}
+Gilbert, Neil A., Nicholas M. Anich, Mike Worland, and Benjamin
+Zuckerberg. 2022. {``Microclimate Complexities at the Trailing Edge of
+the Boreal Forest.''} \emph{Forest Ecology and Management} 524
+(November): 120533. \url{https://doi.org/10.1016/j.foreco.2022.120533}.
+
+\bibitem[\citeproctext]{ref-grahamDynamicMicroclimateBoundaries2021}
+Graham, Eric A., Mark Hansen, William J. Kaiser, Yeung Lam, Eric Yuen,
+and Philip W. Rundel. 2021. {``Dynamic {Microclimate} {Boundaries}
+Across a {Sharp} {Tropical} {Rainforest}--{Clearing} {Edge}.''}
+\emph{Remote Sensing} 13 (9): 1646.
+\url{https://doi.org/10.3390/rs13091646}.
+
+\bibitem[\citeproctext]{ref-grilUsingAirborneLiDAR2023}
+Gril, Eva, Marianne Laslier, Emilie Gallet-Moron, Sylvie Durrieu, Fabien
+Spicher, Vincent Le Roux, Boris Brasseur, et al. 2023. {``Using Airborne
+{LiDAR} to Map Forest Microclimate Temperature Buffering or
+Amplification.''} \emph{Remote Sensing of Environment} 298 (December):
+113820. \url{https://doi.org/10.1016/j.rse.2023.113820}.
+
+\bibitem[\citeproctext]{ref-hesProjectingFutureForest2024}
+Hes, Gabriel, Inne Vanderkelen, Rosie Fisher, Jérôme Chave, Jérôme Ogée,
+and Edouard L Davin. 2024. {``Projecting Future Forest Microclimate
+Using a Land Surface Model.''} \emph{Environmental Research Letters} 19
+(2): 024030. \url{https://doi.org/10.1088/1748-9326/ad1f04}.
+
+\bibitem[\citeproctext]{ref-hovuStrongDifferencesMicroclimate2024}
+Ho Vu, Khanh, Gabriella Süle, Bence Kovács, and László Erdős. 2024.
+{``Strong Differences in Microclimate Among the Habitats of a
+Forest-Steppe Ecosystem.''} \emph{Időjárás} 128 (1): 1--26.
+\url{https://doi.org/10.28974/idojaras.2024.1.1}.
+
+\bibitem[\citeproctext]{ref-hofmeisterMicroclimateEdgeEffect2019}
+Hofmeister, Jeňýk, Jan Hošek, Marek Brabec, Radomíra Střalková, Pavla
+Mýlová, Martin Bouda, Joseph L. Pettit, Miloš Rydval, and Miroslav
+Svoboda. 2019. {``Microclimate Edge Effect in Small Fragments of
+Temperate Forests in the Context of Climate Change.''} \emph{Forest
+Ecology and Management} 448 (September): 48--56.
+\url{https://doi.org/10.1016/j.foreco.2019.05.069}.
+
+\bibitem[\citeproctext]{ref-kaasikuPredationmediatedEdgeEffects2022}
+Kaasiku, T., R. Rannap, and P. Männil. 2022. {``Predation-Mediated Edge
+Effects Reduce Survival of Wader Nests at a Wet Grassland-Forest
+Edge.''} \emph{Animal Conservation} 25 (5): 692--703.
+\url{https://doi.org/10.1111/acv.12774}.
+
+\bibitem[\citeproctext]{ref-kemppinenMicroclimateImportantPart2024}
+Kemppinen, Julia, Jonas J. Lembrechts, Koenraad Van Meerbeek, Jofre
+Carnicer, Nathalie Isabelle Chardon, Paul Kardol, Jonathan Lenoir, et
+al. 2024. {``Microclimate, an Important Part of Ecology and
+Biogeography.''} \emph{Global Ecology and Biogeography} 33 (6): e13834.
+\url{https://doi.org/10.1111/geb.13834}.
+
+\bibitem[\citeproctext]{ref-koelemeijerForestEdgeEffects2023}
+Koelemeijer, Irena Adia, Johan Ehrlén, Pieter De Frenne, Mari Jönsson,
+Peter Berg, and Kristoffer Hylander. 2023. {``Forest Edge Effects on
+Moss Growth Are Amplified by Drought.''} \emph{Ecological Applications}
+33 (4): e2851. \url{https://doi.org/10.1002/eap.2851}.
+
+\bibitem[\citeproctext]{ref-koelemeijerInteractiveEffectsDrought2022}
+Koelemeijer, Irena A., Johan Ehrlén, Mari Jönsson, Pieter De Frenne,
+Peter Berg, Jenny Andersson, Henrik Weibull, and Kristoffer Hylander.
+2022. {``Interactive Effects of Drought and Edge Exposure on Old-Growth
+Forest Understory Species.''} \emph{Landscape Ecology} 37 (7): 1839--53.
+\url{https://doi.org/10.1007/s10980-022-01441-9}.
+
+\bibitem[\citeproctext]{ref-meeussenMicroclimaticEdgetointeriorGradients2021}
+Meeussen, Camille, Sanne Govaert, Thomas Vanneste, Kurt Bollmann, Jörg
+Brunet, Kim Calders, Sara A. O. Cousins, et al. 2021. {``Microclimatic
+Edge-to-Interior Gradients of {European} Deciduous Forests.''}
+\emph{Agricultural and Forest Meteorology} 311 (December): 108699.
+\url{https://doi.org/10.1016/j.agrformet.2021.108699}.
+
+\bibitem[\citeproctext]{ref-meza-elizaldeEdgeInfluenceMicroclimate2021}
+Meza-Elizalde, María C., and Dolors Armenteras-Pascual. 2021. {``Edge
+Influence on the Microclimate and Vegetation of Fragments of a North
+{Amazonian} Forest.''} \emph{Forest Ecology and Management} 498
+(October): 119546. \url{https://doi.org/10.1016/j.foreco.2021.119546}.
+
+\bibitem[\citeproctext]{ref-morrealeElevatedGrowthBiomass2021}
+Morreale, Luca L., Jonathan R. Thompson, Xiaojing Tang, Andrew B.
+Reinmann, and Lucy R. Hutyra. 2021. {``Elevated Growth and Biomass Along
+Temperate Forest Edges.''} \emph{Nature Communications} 12 (1): 7181.
+\url{https://doi.org/10.1038/s41467-021-27373-7}.
+
+\bibitem[\citeproctext]{ref-nunesEdgeEffectsTree2023}
+Nunes, Matheus Henrique, Marcel Caritá Vaz, José Luís Campana Camargo,
+William F. Laurance, Ana de Andrade, Alberto Vicentini, Susan Laurance,
+et al. 2023. {``Edge Effects on Tree Architecture Exacerbate Biomass
+Loss of Fragmented {Amazonian} Forests.''} \emph{Nature Communications}
+14 (1): 8129. \url{https://doi.org/10.1038/s41467-023-44004-5}.
+
+\bibitem[\citeproctext]{ref-permanaSustainingRainforestRemnants2022}
+Permana, Genta, Siti Nurleily Marliana, Ratna Susandarini, and Hadi
+Addaha. 2022. {``Sustaining Rainforest Remnants in Plantation
+Landscapes: Degree of Oil Palm Stand-Induced Edge Effects on Forest
+Microclimate and Regeneration.''} \emph{CERNE} 28: e103039.
+\url{https://doi.org/10.1590/01047760202228013039}.
+
+\bibitem[\citeproctext]{ref-schedlbauerEdgeEffectsIncrease2022}
+Schedlbauer, Jessica L., and Jason Miller. 2022. {``Edge Effects
+Increase Soil Respiration Without Altering Soil Carbon Stocks in
+Temperate Broadleaf Forests.''} \emph{Ecosphere} 13 (6): e4092.
+\url{https://doi.org/10.1002/ecs2.4092}.
+
+\bibitem[\citeproctext]{ref-schreierMathematicalModellingApproach2022}
+Schreier, Amy L., Kristofor A. Voss, and Laura M. Bolt. 2022. {``A
+{Mathematical} {Modelling} {Approach} to {Functionally} {Defining}
+{Forest} {Edge} and {Its} {Utility} for {Primate} {Behavioural} {Edge}
+{Effects}.''} \emph{International Journal of Primatology} 43 (3):
+460--79. \url{https://doi.org/10.1007/s10764-022-00289-9}.
+
+\bibitem[\citeproctext]{ref-senevirathnaRemnantForestPatches2024}
+Senevirathna, Ayesha D., Hiran H. E. Jayaweera, H. A. S. Gayan
+Dharmarathne, and Mayuri R. Wijesinghe. 2024. {``Do Remnant Forest
+Patches Provide Microclimate Buffering? {A} Case Study from {Sri}
+{Lanka}.''} \emph{Forest Ecology and Management} 562 (June): 121925.
+\url{https://doi.org/10.1016/j.foreco.2024.121925}.
+
+\bibitem[\citeproctext]{ref-slaterLivingEdgeForest2024}
+Slater, Helen D., Phillipa K. Gillingham, Victoria Pratt, Ben Eaton,
+Simon Fletcher, Abdullah Abdullah, Supriadi, and Amanda H. Korstjens.
+2024. {``Living on the Edge: Forest Edge Effects on Microclimate and
+Terrestrial Mammal Activity in Disturbed Lowland Forest in {Sumatra},
+{Indonesia}.''} \emph{Oryx} 58 (2): 228--39.
+\url{https://doi.org/10.1017/S0030605323000212}.
+
+\bibitem[\citeproctext]{ref-willmerGlobalImpactsEdge2022}
+Willmer, Julian Nicholas G., Thomas Püttker, and Jayme Augusto
+Prevedello. 2022. {``Global Impacts of Edge Effects on Species
+Richness.''} \emph{Biological Conservation} 272 (August): 109654.
+\url{https://doi.org/10.1016/j.biocon.2022.109654}.
+
+\bibitem[\citeproctext]{ref-zellwegerMicroclimateMappingUsing2024}
+Zellweger, Florian, Eric Sulmoni, Johanna T. Malle, Andri Baltensweiler,
+Tobias Jonas, Niklaus E. Zimmermann, Christian Ginzler, et al. 2024.
+{``Microclimate Mapping Using Novel Radiative Transfer Modelling.''}
+\emph{Biogeosciences} 21 (2): 605--23.
+\url{https://doi.org/10.5194/bg-21-605-2024}.
+
+\bibitem[\citeproctext]{ref-zhengDisentanglingBioticAbiotic2021}
+Zheng, Shilu, Bruce L. Webber, Raphael K. Didham, Chun Chen, and
+Mingjian Yu. 2021. {``Disentangling Biotic and Abiotic Drivers of
+Intraspecific Trait Variation in Woody Plant Seedlings at Forest
+Edges.''} \emph{Ecology and Evolution} 11 (14): 9728--40.
+\url{https://doi.org/10.1002/ece3.7799}.
+
+\end{CSLReferences}
+
+\end{document}

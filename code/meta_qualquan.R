@@ -1,41 +1,118 @@
 #Combined qualitative and quantitative data
 
-library(reshape2) #Version 0.8.7
-library(ggplot2) #Version 2.2.1
-library(gridExtra) #Version 2.3
-library(readr) #Version 1.1.1
-library(dplyr) #Version 0.7.4
+# load libraries ----------------------------------------------------------
+
+library(tidyverse)
+library(gridExtra)
+
+
+# load data ---------------------------------------------------------------
 
 #knit together qualitative & quantitative data
 vardata <- read_csv("./Outputs/vardata.csv")
 mergedrefined8 <- read_csv("./Data/mergedrefined8.csv")
 
-qualquan <- merge(vardata,mergedrefined8,by="article.id", all = TRUE)
+qualquan <- full_join(vardata,mergedrefined8,by="article.id")
 
 
+qualquan<-qualquan %>% 
+  mutate(AT=
+           case_when(
+             var.1 == "AT"|
+               var.2 == "AT"|
+               var.3 == "AT"|
+               var.4 == "AT"|
+               var.5 == "AT"|
+               var.6 == "AT"|
+               var.7 == "AT" ~ "AT",
+             TRUE ~ NA_character_)
+         ) %>% 
+  mutate(DT=
+           case_when(
+             var.1 == "DT"|
+               var.2 == "DT"|
+               var.3 == "DT"|
+               var.4 == "DT"|
+               var.5 == "DT"|
+               var.6 == "DT"|
+               var.7 == "DT" ~ "DT",
+             TRUE ~ NA_character_)
+  )
+
+
+qualquan %>% paste("var.1","var.7", sep=" ")
+
+
+summary(as.factor(qualquan$DT))
+
+# mutate(H=
+# mutate(PT=
+# mutate(RH=
+# mutate(TP=
+# mutate(VPD=
+# mutate(ST=
+# mutate(SH=
+# mutate(SM=
+# mutate(SFT=
+# mutate(LI=
+# mutate(LIT=
+# mutate(LUX=
+# mutate(PAR=
+# mutate(PPFD=
+# mutate(SRFD=
+# mutate(WS=
+  
+
+
+# citations by region -----------------------------------------------------
+
+quanbroad <- qualquan %>% 
+  filter(!is.na(just.dist)) %>% 
+  select(article.id, citations,broad) %>% 
+  distinct()
+
+
+n_trop<-quanbroad %>% 
+  filter(broad=="tropical") %>% 
+  summarize(n=n_distinct(article.id))
+
+n_temp<-quanbroad %>% 
+  filter(broad=="temperate") %>% 
+  summarize(n=n_distinct(article.id))
+
+
+n_boreal<-quanbroad %>% 
+  filter(broad=="boreal") %>% 
+  summarize(n=n_distinct(article.id))
+
+
+
+quan.cite<-qualquan %>% 
+  filter(!is.na(just.dist)) %>% 
+  select(article.id, citations,broad) %>% 
+  distinct() %>% 
+  group_by(broad) %>% 
+  summarize(sum_cites=sum(citations)) 
+quan.cite
+
+# figures -----------------------------------------------------------------
 
 #graph by broad region ####
-quanonly <- qualquan[!is.na(qualquan$just.dist),]
 
-tropics <- quanonly[quanonly$broad == "tropical",]
+tropics <- qualquan %>% 
+  filter(!is.na(just.dist)) %>% 
+  filter(broad == "tropical")
 
-boreal <- quanonly[quanonly$broad == "boreal",]
+boreal <- qualquan %>% 
+  filter(!is.na(just.dist)) %>% 
+  filter(broad == "boreal")
 
-temperate <- quanonly[quanonly$broad == "temperate",]
-
-#citations, with data ####
-quanbroad <- unique(quanonly[,c(1,36,126)])
-length(unique(quanbroad$article.id[quanbroad$broad=="tropical"]))
-length(unique(quanbroad$article.id[quanbroad$broad=="temperate"]))
-length(unique(quanbroad$article.id[quanbroad$broad=="boreal"]))
-
-quan.cite <- quanbroad %>% group_by(broad) %>% summarize(sum(citations)) 
-
-
-
+temperate <- qualquan %>% 
+  filter(!is.na(just.dist)) %>% 
+  filter(broad == "temperate")
 
 #tropics trends ####
-ggplot(tropics,aes(x = just.dist)) +
+plot_perc_diff<-ggplot(tropics,aes(x = just.dist)) +
   geom_smooth(aes(y=percent_diff), color = "green",alpha=0) +
   geom_smooth(aes(y=percentws_diff), color = "red",alpha=0) +
   geom_smooth(aes(y=percentVPD_diff), color = "blue",alpha=0) +
@@ -44,11 +121,15 @@ ggplot(tropics,aes(x = just.dist)) +
   geom_smooth(aes(y=percentrh_diff), color = "purple",alpha=0) +
   geom_line(aes(y=0),color="black")+
   coord_cartesian(xlim=c(-10,250))
+plot_perc_diff<-plot_perc_diff+theme_classic()
+plot_perc_diff
 
-ggplot(tropics,aes(x = just.dist)) +
-  geom_smooth(aes(y=percentPAR_diff), color = "yellow",alpha=0) +
-  geom_line(aes(y=0),color="black")+
-  coord_cartesian(xlim=c(-10,250))
+
+
+# figure 8  TROPICAL -----------------------------------------------------
+
+
+# temp & humidity panel
 
 ba <- ggplot(tropics,aes(x = just.dist)) +
   theme_classic()+
@@ -65,7 +146,12 @@ ba <- ggplot(tropics,aes(x = just.dist)) +
   geom_vline(xintercept=0) +
   coord_cartesian(xlim=c(-10,250))+
   ylim(-20,20)
+ba
 
+
+
+
+# VPD - not used in figure
 bb <- ggplot(tropics,aes(x = just.dist)) +
   theme_classic()+
   ggtitle("VPD")+
@@ -74,6 +160,9 @@ bb <- ggplot(tropics,aes(x = just.dist)) +
   ylab("% difference from interior point")+
   geom_line(aes(y=0),color="black")+
   coord_cartesian(xlim=c(-10,250))
+bb
+
+# soil panel
 
 bc <- ggplot(tropics,aes(x = just.dist)) +
   theme_classic()+
@@ -90,7 +179,12 @@ bc <- ggplot(tropics,aes(x = just.dist)) +
   geom_vline(xintercept=0) +
   coord_cartesian(xlim=c(-10,250))+
   ylim(-50,50)
+bc
 
+
+
+
+# Light panel
 bd <- ggplot(tropics,aes(x = just.dist)) +
   theme_classic()+
   ggtitle("Light")+
@@ -102,6 +196,9 @@ bd <- ggplot(tropics,aes(x = just.dist)) +
   geom_line(aes(y=0),color="black")+
   geom_vline(xintercept=0) +
   coord_cartesian(xlim=c(-10,250))
+bd
+
+# Wind
 
 be <- ggplot(tropics,aes(x = just.dist)) +
   theme_classic()+
@@ -114,10 +211,28 @@ be <- ggplot(tropics,aes(x = just.dist)) +
   geom_line(aes(y=0),color="black")+
   geom_vline(xintercept=0) +
   coord_cartesian(xlim=c(-10,250))
+be
 
 grid.arrange(ba,bc,bd,be,ncol=2,nrow=2)
 
-#temperate trends ####
+
+
+
+#  Light (PAR) Difference  ------------------------------------------------
+
+
+plot_perc_diff_par<-ggplot(tropics,aes(x = just.dist)) +
+  geom_smooth(aes(y=percentPAR_diff), color = "yellow",alpha=0) +
+  geom_line(aes(y=0),color="black")+
+  coord_cartesian(xlim=c(-10,250))
+plot_perc_diff_par<-plot_perc_diff_par+theme_classic()
+plot_perc_diff_par
+
+
+
+
+# figure 8  TEMPERATE -----------------------------------------------------
+
 ggplot(temperate,aes(x = just.dist)) +
   geom_smooth(aes(y=percent_diff), color = "green",alpha=0) +
   geom_smooth(aes(y=percentVPD_diff), color = "blue",alpha=0) +
@@ -125,16 +240,20 @@ ggplot(temperate,aes(x = just.dist)) +
   geom_smooth(aes(y=percentsm_diff), color = "orange",alpha=0) +
   geom_smooth(aes(y=percentrh_diff), color = "purple",alpha=0) +
   geom_line(aes(y=0),color="black")+
-  coord_cartesian(xlim=c(-10,250))
+  coord_cartesian(xlim=c(-10,250))+
+  theme_classic()
 
+
+# light
 ggplot(temperate,aes(x = just.dist)) +
   geom_smooth(aes(y=percentPAR_diff), color = "yellow",alpha=0) +
   geom_smooth(aes(y=percentws_diff), color = "red",alpha=0) +
   geom_line(aes(y=0),color="black")+
-  coord_cartesian(xlim=c(-10,250))
+  coord_cartesian(xlim=c(-10,250))+
+  theme_classic()
 
+# air temp and humidity
 ca <- ggplot(temperate,aes(x = just.dist)) +
-  theme_classic()+
   ggtitle("Temperature and humidity")+
   geom_point(aes(y=percent_diff),color="lightslateblue",alpha=0.2) +
   geom_point(aes(y=percentrh_diff),color="indianred3",alpha=0.2) +
@@ -147,8 +266,11 @@ ca <- ggplot(temperate,aes(x = just.dist)) +
   geom_line(aes(y=0),color="black")+
   geom_vline(xintercept=0) +
   coord_cartesian(xlim=c(-10,250))+
-  ylim(-15,15)
+  ylim(-15,15)+
+  theme_classic()
+ca
 
+# vpd (not used)
 cb <- ggplot(temperate,aes(x = just.dist)) +
   theme_classic()+
   ggtitle("VPD")+
@@ -157,7 +279,9 @@ cb <- ggplot(temperate,aes(x = just.dist)) +
   ylab("% difference from interior point")+
   geom_line(aes(y=0),color="black")+
   coord_cartesian(xlim=c(-10,250))
+cb
 
+# Soil 
 cc <- ggplot(temperate,aes(x = just.dist)) +
   theme_classic()+
   ggtitle("Soil")+
@@ -173,7 +297,9 @@ cc <- ggplot(temperate,aes(x = just.dist)) +
   geom_vline(xintercept=0) +
   coord_cartesian(xlim=c(-10,250))+
   ylim(-25,25)
+cc
 
+# Light panel
 cd <- ggplot(temperate,aes(x = just.dist)) +
   theme_classic()+
   ggtitle("Light")+
@@ -185,7 +311,9 @@ cd <- ggplot(temperate,aes(x = just.dist)) +
   geom_line(aes(y=0),color="black")+
   geom_vline(xintercept=0) +
   coord_cartesian(xlim=c(-10,250))
+cd
 
+# wind
 ce <- ggplot(temperate,aes(x = just.dist)) +
   theme_classic()+
   ggtitle("Wind")+
@@ -197,8 +325,13 @@ ce <- ggplot(temperate,aes(x = just.dist)) +
   geom_line(aes(y=0),color="black")+
   geom_vline(xintercept=0) +
   coord_cartesian(xlim=c(-10,250))
+ce
 
 grid.arrange(ca,cc,cd,ce,ncol=2,nrow=2)
+
+
+# FIgure 8 BOREAL ---------------------------------------------------------
+
 
 #boreal trends ####
 
@@ -210,6 +343,8 @@ ggplot(boreal,aes(x = just.dist)) +
   geom_line(aes(y=0),color="black")+
   coord_cartesian(xlim=c(-10,250),ylim=c(-30,30))
 
+
+# temp nd Humidity
 da <- ggplot(boreal,aes(x = just.dist)) +
   theme_classic()+
   ggtitle("Temperature and humidity")+
@@ -220,7 +355,9 @@ da <- ggplot(boreal,aes(x = just.dist)) +
   geom_line(aes(y=0),color="black")+
   geom_vline(xintercept=0) +
   coord_cartesian(xlim=c(-10,250))
+da
 
+# vpd
 db <- ggplot(boreal,aes(x = just.dist)) +
   theme_classic()+
   ggtitle("VPD")+
@@ -229,7 +366,10 @@ db <- ggplot(boreal,aes(x = just.dist)) +
   ylab("% difference from interior point")+
   geom_line(aes(y=0),color="black")+
   coord_cartesian(xlim=c(-10,250))
+db
 
+
+# soil
 dc <- ggplot(boreal,aes(x = just.dist)) +
   theme_classic()+
   ggtitle("Soil")+
@@ -240,7 +380,9 @@ dc <- ggplot(boreal,aes(x = just.dist)) +
   geom_line(aes(y=0),color="black")+
   geom_vline(xintercept=0) +
   coord_cartesian(xlim=c(-10,250))
+dc
 
+# PAR
 dd <- ggplot(boreal,aes(x = just.dist)) +
   theme_classic()+
   ggtitle("Light")+
@@ -250,7 +392,9 @@ dd <- ggplot(boreal,aes(x = just.dist)) +
   geom_line(aes(y=0),color="black")+
   geom_vline(xintercept=0) +
   coord_cartesian(xlim=c(-10,250))
+dd
 
+# wind
 de <- ggplot(boreal,aes(x = just.dist)) +
   theme_classic()+
   ggtitle("Wind")+
@@ -260,12 +404,16 @@ de <- ggplot(boreal,aes(x = just.dist)) +
   geom_line(aes(y=0),color="black")+
   geom_vline(xintercept=0) +
   coord_cartesian(xlim=c(-10,250))
+de
 
 #no data for light and wind
 
 grid.arrange(da,dc,dd,de,ncol=2,nrow=2)
 
-#temperate to compare to boreal ####
+
+# temperate to compare to boreal ------------------------------------------
+
+
 ggplot(temperate,aes(x = just.dist)) +
   geom_smooth(aes(y=percent_diff), color = "green",alpha=0) +
   geom_smooth(aes(y=percentsm_diff), color = "orange",alpha=0) +
@@ -274,7 +422,10 @@ ggplot(temperate,aes(x = just.dist)) +
   geom_line(aes(y=0),color="black")+
   coord_cartesian(xlim=c(-10,250),ylim=c(-30,30))
 
-#tropics to compare to boreal ####
+
+# tropics to compare to boreal  -------------------------------------------
+
+
 ggplot(tropics,aes(x = just.dist)) +
   geom_smooth(aes(y=percent_diff), color = "green",alpha=0) +
   geom_smooth(aes(y=percentsm_diff), color = "orange",alpha=0) +
@@ -283,6 +434,8 @@ ggplot(tropics,aes(x = just.dist)) +
   geom_line(aes(y=0),color="black")+
   coord_cartesian(xlim=c(-10,250),ylim=c(-30,30))
 
+
+# analyses ----------------------------------------------------------------
 
 #GLM on distance, lat ####
 #remove percentages on quanonly, log to remove neg

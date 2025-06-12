@@ -1,0 +1,32 @@
+\begin{table*}[hbt]
+\ifnextchar[{\eatarg}{}
+[!h]
+\centering\begingroup\fontsize{12}{14}\selectfont
+
+\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
+\begin{tabular}{ll}
+\toprule
+Abiotic Variable & Alternative Measurments\\
+\midrule
+Air temperature & Air temperature (AT)*\\
+ & dewpoint temperature (DT)\\
+Humidity & Humidity (H)\\
+ & precipitation (PT)\\
+ & relative humidity (RH)*\\
+ & throughfall precipitation (TP)\\
+ & vapor pressure deficit (VPD)*\\
+Soil properties & Soil temperature (ST)*\\
+ & soil humidity (SH)\\
+ & soil moisture (SM)*\\
+Surface & Surface temperature (SFT)\\
+Light & Light incidence (LI)\\
+ & light intensity (LIT)\\
+ & lux (LUX)\\
+ & photosynthetic active radiation (PAR)*\\
+ & photosynthetic photon flux density (PPFD)\\
+ & solar radiation flux density (SRFD)\\
+Wind & Wind speed (WS)*\\
+\bottomrule
+\end{tabular}}
+\endgroup{}
+\end{table*}

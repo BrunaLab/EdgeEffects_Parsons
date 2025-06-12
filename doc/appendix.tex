@@ -1,0 +1,582 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  12pt,
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ % allow citations to break across lines
+ \let\@cite@ofmt\@firstofone
+ % avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
+  \fi
+  % set entry spacing
+  \setlength{\itemsep}{#2\baselineskip}}}
+ {\end{list}}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyfoot{}
+\fancyhead[L]{APCs and Author Diversity (Supplement)}
+\fancyhead[R]{p. \thepage}
+\usepackage{setspace}
+\usepackage{parskip}
+\usepackage{pdflscape}
+\newcommand{\blandscape}{\begin{landscape}}
+\newcommand{\elandscape}{\end{landscape}}
+\usepackage{caption}
+\DeclareCaptionLabelFormat{Sformat}{#1 S#2}
+\captionsetup[table]{labelformat=Sformat}
+\captionsetup[figure]{labelformat=Sformat}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Appendix to Edge Effects MS},
+  pdfauthor={Parsons and Bruna},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Appendix to Edge Effects MS}
+\author{Parsons and Bruna}
+\date{}
+
+\begin{document}
+\maketitle
+
+Draft: 12 June 2025
+
+The following articles were used in the review.
+
+\section*{References}\label{references}
+\addcontentsline{toc}{section}{References}
+
+\phantomsection\label{refs}
+\begin{CSLReferences}{1}{0}
+\bibitem[\citeproctext]{ref-aragonEdgeTypeDetermines2015}
+Aragón, Gregorio, Laura Abuja, Rocío Belinchón, and Isabel Martínez.
+2015. {``Edge Type Determines the Intensity of Forest Edge Effect on
+Epiphytic Communities.''} \emph{European Journal of Forest Research} 134
+(3): 443--51. \url{https://doi.org/10.1007/s10342-015-0863-5}.
+
+\bibitem[\citeproctext]{ref-badanoMicroclimateSeedingPredation2015}
+Badano, Ernesto I., Omar R. Samour-Nieva, Joel Flores, and David
+Douterlungne. 2015. {``Microclimate and Seeding Predation as Drivers of
+Tree Recruitment in Human-Disturbed Oak Forests.''} \emph{Forest Ecology
+and Management} 356 (November): 93--100.
+\url{https://doi.org/10.1016/j.foreco.2015.07.031}.
+
+\bibitem[\citeproctext]{ref-bakerMicroclimaticEdgeEffects2016}
+Baker, Thomas P., Gregory J. Jordan, and Susan C. Baker. 2016.
+{``Microclimatic Edge Effects in a Recently Harvested Forest: {Do}
+Remnant Forest Patches Create the Same Impact as Large Forest Areas?''}
+\emph{Forest Ecology and Management} 365 (April): 128--36.
+\url{https://doi.org/10.1016/j.foreco.2016.01.022}.
+
+\bibitem[\citeproctext]{ref-bakerMicroclimateSpaceTime2014}
+Baker, Thomas P., Gregory J. Jordan, E. Ashley Steel, Nicholas M.
+Fountain-Jones, Timothy J. Wardlaw, and Susan C. Baker. 2014.
+{``Microclimate Through Space and Time: {Microclimatic} Variation at the
+Edge of Regeneration Forests over Daily, Yearly and Decadal Time
+Scales.''} \emph{Forest Ecology and Management} 334 (December): 174--84.
+\url{https://doi.org/10.1016/j.foreco.2014.09.008}.
+
+\bibitem[\citeproctext]{ref-brigicOldForestEdges2014}
+Brigić, Andreja, Marija Starčević, Boris Hrašovec, and Zoltán Elek.
+2014. {``Old Forest Edges May Promote the Distribution of Forest Species
+in Carabid Assemblages ({Coleoptera}: {Carabidae}) in {Croatian}
+Forests.''} \emph{European Journal of Entomology} 111 (5): 715--25.
+\url{https://doi.org/10.14411/eje.2014.090}.
+
+\bibitem[\citeproctext]{ref-brunaEdgeEffectsGrowth2011}
+Bruna, Emilio M., and Ana Segalin De Andrade. 2011. {``Edge Effects on
+Growth and Biomass Partitioning of an {Amazonian} Understory Herb (
+\emph{{Heliconia} Acuminata} ; {Heliconiaceae}).''} \emph{American
+Journal of Botany} 98 (10): 1727--34.
+\url{https://doi.org/10.3732/ajb.1000290}.
+
+\bibitem[\citeproctext]{ref-brunialtiFragmentationMediterraneanOak2012}
+Brunialti, Giorgio, Luisa Frati, and Stefano Loppi. 2012.
+{``Fragmentation of {Mediterranean} Oak Forests Affects the Diversity of
+Epiphytic Lichens.''} \emph{Nova Hedwigia} 96 (1-2): 265--78.
+\url{https://doi.org/10.1127/0029-5035/2012/0075}.
+
+\bibitem[\citeproctext]{ref-buenoFacilitationEdgeEffects2015}
+Bueno, Andrea, and Luis D. Llambí. 2015. {``Facilitation and Edge
+Effects Influence Vegetation Regeneration in Old-Fields at the Tropical
+{Andean} Forest Line.''} Edited by Karsten Wesche. \emph{Applied
+Vegetation Science} 18 (4): 613--23.
+\url{https://doi.org/10.1111/avsc.12186}.
+
+\bibitem[\citeproctext]{ref-cadenassoFunctionalLocationForest1997}
+Cadenasso, M L, M M Traynor, and S TA Pickett. 1997. {``Functional
+Location of Forest Edges: Gradients of Multiple Physical Factors''} 27.
+
+\bibitem[\citeproctext]{ref-camargoComplexEdgeEffects1995}
+Camargo, J. L. C., and V. Kapos. 1995. {``Complex {Edge} {Effects} on
+{Soil} {Moisture} and {Microclimate} in {Central} {Amazonian}
+{Forest}.''} \emph{Journal of Tropical Ecology} 11 (2): 205--21.
+\url{http://www.jstor.org/stable/2560108}.
+
+\bibitem[\citeproctext]{ref-cappelattiSPATIALDISTRIBUTIONPOPULATION2015}
+Cappelatti, Laura, and Jairo Lizandro Schmitt. 2015. {``{SPATIAL}
+{DISTRIBUTION} {AND} {POPULATION} {STRUCTURE} {OF} {PALMS} ({ARECACEAE})
+{IN} {A} {FOREST} {FRAGMENT} {OF} {LOWLAND} {DENSE} {HUMID} {FOREST}
+{IN} {SOUTH} {BRAZIL}.''} \emph{Ciência Florestal} 25 (4): 817--25.
+\url{https://doi.org/10.5902/1980509820577}.
+
+\bibitem[\citeproctext]{ref-cerbonciniEdgeEffectsHabitat2016}
+Cerboncini, Ricardo A. S., James J. Roper, and Fernando C. Passos. 2016.
+{``Edge Effects Without Habitat Fragmentation? {Small} Mammals and a
+Railway in the {Atlantic} {Forest} of Southern {Brazil}.''} \emph{Oryx}
+50 (3): 460--67. \url{https://doi.org/10.1017/S0030605314001070}.
+
+\bibitem[\citeproctext]{ref-chenContrastingMicroclimatesClearcut1993}
+Chen, Jiquan, Jerry F. Franklin, and Thomas A. Spies. 1993.
+{``Contrasting Microclimates Among Clearcut, Edge, and Interior of
+Old-Growth {Douglas}-Fir Forest.''} \emph{Agricultural and Forest
+Meteorology} 63 (3-4): 219--37.
+\url{https://doi.org/10.1016/0168-1923(93)90061-L}.
+
+\bibitem[\citeproctext]{ref-chenGrowingSeasonMicroclimaticGradients1995}
+---------. 1995. {``Growing-{Season} {Microclimatic} {Gradients} from
+{Clearcut} {Edges} into {Old}-{Growth} {Douglas}-{Fir} {Forests}.''}
+\emph{Ecological Applications} 5 (1): 74--86.
+\url{https://doi.org/10.2307/1942053}.
+
+\bibitem[\citeproctext]{ref-christianiniEdgeEffectsDecrease2013}
+Christianini, Alexander V., and Paulo S. Oliveira. 2013. {``Edge Effects
+Decrease Ant-Derived Benefits to Seedlings in a Neotropical Savanna.''}
+\emph{Arthropod-Plant Interactions} 7 (2): 191--99.
+\url{https://doi.org/10.1007/s11829-012-9229-9}.
+
+\bibitem[\citeproctext]{ref-crockattEdgeEffectsMoisture2015}
+Crockatt, Martha E., and Daniel P. Bebber. 2015. {``Edge Effects on
+Moisture Reduce Wood Decomposition Rate in a Temperate Forest.''}
+\emph{Global Change Biology} 21 (2): 698--707.
+\url{https://doi.org/10.1111/gcb.12676}.
+
+\bibitem[\citeproctext]{ref-cubidesAnthropogenicDisturbanceEdge2011}
+Cubides, Paola Johanna Isaacs, and José Nicolás Urbina Cardona. 2011.
+{``Anthropogenic {Disturbance} and {Edge} {Effects} on {Anuran}
+{Assemblages} {Inhabiting} {Cloud} {Forest} {Fragments} in
+{Colombia}.''} \emph{Natureza \& Conservação} 9 (1): 39--46.
+\url{https://doi.org/10.4322/natcon.2011.004}.
+
+\bibitem[\citeproctext]{ref-davies-colleyMicroclimateGradientsForest2000}
+Davies-Colley, R J, and G W Payne. 2000. {``Microclimate Gradients
+Across a Forest Edge.''} \emph{NEW ZEALAND JOURNAL OF ECOLOGY} 24 (2).
+
+\bibitem[\citeproctext]{ref-delgadoEdgeEffectsRoads2007}
+Delgado, Juan D., Natalia L. Arroyo, José R. Arévalo, and José M.
+Fernández-Palacios. 2007. {``Edge Effects of Roads on Temperature,
+Light, Canopy Cover, and Canopy Height in Laurel and Pine Forests
+({Tenerife}, {Canary} {Islands}).''} \emph{Landscape and Urban Planning}
+81 (4): 328--40.
+\url{https://doi.org/10.1016/j.landurbplan.2007.01.005}.
+
+\bibitem[\citeproctext]{ref-didhamEdgeEffectsDisrupt2014a}
+Didham, Raphael K., and Robert M. Ewers. 2014. {``Edge {Effects}
+{Disrupt} {Vertical} {Stratification} of {Microclimate} in a {Temperate}
+{Forest} {Canopy}.''} \emph{Pacific Science} 68 (4): 493--508.
+\url{https://doi.org/10.2984/68.4.4}.
+
+\bibitem[\citeproctext]{ref-didhamEdgeStructureDetermines1999a}
+Didham, Raphael K., and John H. Lawton. 1999. {``Edge {Structure}
+{Determines} the {Magnitude} of {Changes} in {Microclimate} and
+{Vegetation} {Structure} in {Tropical} {Forest} {Fragments}.''}
+\emph{Biotropica} 31 (1): 17. \url{https://doi.org/10.2307/2663956}.
+
+\bibitem[\citeproctext]{ref-dilrukshiKirigalaForestFragments2016}
+Dilrukshi, Iadn, and Smw Ranwala. 2016. {``Kirigala Forest Fragments and
+the Identity as a Dipterocarp Plantation or {Hora} {Kele} of
+{Ingiriya}.''} \emph{Journal of the National Science Foundation of Sri
+Lanka} 44 (3): 313. \url{https://doi.org/10.4038/jnsfsr.v44i3.8012}.
+
+\bibitem[\citeproctext]{ref-dodonovRoleEdgeContrast2013}
+Dodonov, Pavel, Karen A. Harper, and Dalva M. Silva-Matos. 2013. {``The
+Role of Edge Contrast and Forest Structure in Edge Influence: Vegetation
+and Microclimate at Edges in the {Brazilian} Cerrado.''} \emph{Plant
+Ecology} 214 (11): 1345--59. \url{http://www.jstor.org/stable/24553703}.
+
+\bibitem[\citeproctext]{ref-dovciakSecondaryEdgeEffects2014}
+Dovčiak, Martin, and Jordan Brown. 2014. {``Secondary Edge Effects in
+Regenerating Forest Landscapes: Vegetation and Microclimate Patterns and
+Their Implications for Management and Conservation.''} \emph{New
+Forests} 45 (5): 733--44.
+\url{https://doi.org/10.1007/s11056-014-9419-7}.
+
+\bibitem[\citeproctext]{ref-draaijersAtmosphericDepositionComplex1994}
+Draaijers, G. P. J., R. Van Ek, and W. Bleuten. 1994. {``Atmospheric
+Deposition in Complex Forest Landscapes.''} \emph{Boundary-Layer
+Meteorology} 69 (4): 343--66. \url{https://doi.org/10.1007/BF00718124}.
+
+\bibitem[\citeproctext]{ref-ewersFragmentationImpairsMicroclimate2013a}
+Ewers, Robert M., and Cristina Banks-Leite. 2013. {``Fragmentation
+{Impairs} the {Microclimate} {Buffering} {Effect} of {Tropical}
+{Forests}.''} Edited by Gil Bohrer. \emph{PLoS ONE} 8 (3): e58093.
+\url{https://doi.org/10.1371/journal.pone.0058093}.
+
+\bibitem[\citeproctext]{ref-gehlhausenVegetationMicroclimaticEdge2000}
+Gehlhausen, Sophia M., Mark W. Schwartz, and Carol K. Augspurger. 2000.
+{``Vegetation and {Microclimatic} {Edge} {Effects} in {Two}
+{Mixed}-{Mesophytic} {Forest} {Fragments}.''} \emph{Plant Ecology} 147
+(1): 21--35. \url{http://www.jstor.org/stable/20050900}.
+
+\bibitem[\citeproctext]{ref-gignacEffectsFragmentSize2005}
+Gignac, L. Dennis, and Mark R. T. Dale. 2005. {``Effects of {Fragment}
+{Size} and {Habitat} {Heterogeneity} on {Cryptogam} {Diversity} in the
+{Low}-Boreal {Forest} of {Western} {Canada}.''} \emph{The Bryologist}
+108 (1): 50--66.
+\url{https://doi.org/10.1639/0007-2745(2005)108\%5B50:EOFSAH\%5D2.0.CO;2}.
+
+\bibitem[\citeproctext]{ref-heitheckerEdgerelatedGradientsMicroclimate2007}
+Heithecker, Troy D., and Charles B. Halpern. 2007. {``Edge-Related
+Gradients in Microclimate in Forest Aggregates Following Structural
+Retention Harvests in Western {Washington}.''} \emph{Forest Ecology and
+Management} 248 (3): 163--73.
+\url{https://doi.org/10.1016/j.foreco.2007.05.003}.
+
+\bibitem[\citeproctext]{ref-hennenbergDetectionSeasonalVariability2008}
+Hennenberg, Klaus Josef, Dethardt Goetze, Jörg Szarzynski, Bettina
+Orthmann, Björn Reineking, Ingo Steinke, and Stefan Porembski. 2008.
+{``Detection of Seasonal Variability in Microclimatic Borders and
+Ecotones Between Forest and Savanna.''} \emph{Basic and Applied Ecology}
+9 (3): 275--85. \url{https://doi.org/10.1016/j.baae.2007.02.004}.
+
+\bibitem[\citeproctext]{ref-ibanezSharpTransitionsMicroclimatic2013}
+Ibanez, Thomas, Christelle Hély, and Cédric Gaucherel. 2013. {``Sharp
+Transitions in Microclimatic Conditions Between Savanna and Forest in
+{New} {Caledonia}: {Insights} into the Vulnerability of Forest Edges to
+Fire: {Microclimate} at the {Forest} {Edge}.''} \emph{Austral Ecology}
+38 (6): 680--87. \url{https://doi.org/10.1111/aec.12015}.
+
+\bibitem[\citeproctext]{ref-joseVegetationResponsesEdgetointerior1996}
+Jose, Shibu, Andrew R. Gillespie, Suman Jacob George, and B.Mohan Kumar.
+1996. {``Vegetation Responses Along Edge-to-Interior Gradients in a High
+Altitude Tropical Forest in Peninsular {India}.''} \emph{Forest Ecology
+and Management} 87 (1-3): 51--62.
+\url{https://doi.org/10.1016/S0378-1127(96)03836-4}.
+
+\bibitem[\citeproctext]{ref-kapos1997edge}
+Kapos, V. 1997. {``Edge-Related Changes in Environment and Plant
+Responses Due to Forest Fragmentation in Central {Amazonia}.''}
+\emph{Tropical Forest Remnants: Ecology, Management, and Conservation of
+Fragmented Communities}.
+
+\bibitem[\citeproctext]{ref-kunertHigherTreeTranspiration2015}
+Kunert, Norbert, Luiza Maria Teóphilo Aparecido, Niro Higuchi, Joaquim
+Dos Santos, and Susan Trumbore. 2015. {``Higher Tree Transpiration Due
+to Road-Associated Edge Effects in a Tropical Moist Lowland Forest.''}
+\emph{Agricultural and Forest Meteorology} 213 (November): 183--92.
+\url{https://doi.org/10.1016/j.agrformet.2015.06.009}.
+
+\bibitem[\citeproctext]{ref-lehtinenEdgeEffectsExtinction}
+Lehtinen, Richard M, Jean-Baptiste Ramanamanjato, and Joe Gaby
+Raveloarison. n.d. {``Edge Effects and Extinction Proneness in a
+Herpetofauna from {Madagascar}.''}
+
+\bibitem[\citeproctext]{ref-lima-ribeiroEfeitosBordaSobre2008}
+Lima-Ribeiro, Matheus De Souza. 2008. {``Efeitos de Borda Sobre a
+Vegetação e Estruturação Populacional Em Fragmentos de {Cerradão} No
+{Sudoeste} {Goiano}, {Brasil}.''} \emph{Acta Botanica Brasilica} 22 (2):
+535--45. \url{https://doi.org/10.1590/S0102-33062008000200020}.
+
+\bibitem[\citeproctext]{ref-macdougallUnderstoreyLightRegime1992}
+MacDougall, Andrew, and Martin Kellman. 1992. {``The {Understorey}
+{Light} {Regime} and {Patterns} of {Tree} {Seedlings} in {Tropical}
+{Riparian} {Forest} {Patches}.''} \emph{Journal of Biogeography} 19 (6):
+667. \url{https://doi.org/10.2307/2845708}.
+
+\bibitem[\citeproctext]{ref-magnagoMicroclimaticConditionsForest2015}
+Magnago, Luiz Fernando Silva, Mariana Ferreira Rocha, Leila Meyer,
+Sebastião Venâncio Martins, and João Augusto Alves Meira-Neto. 2015.
+{``Microclimatic Conditions at Forest Edges Have Significant Impacts on
+Vegetation Structure in Large {Atlantic} Forest Fragments.''}
+\emph{Biodiversity and Conservation} 24 (9): 2305--18.
+\url{https://doi.org/10.1007/s10531-015-0961-1}.
+
+\bibitem[\citeproctext]{ref-malombeEdgeEffectEpiphyllous2016}
+Malombe, Itambo, Kennedy Wambua Matheka, Tamás Pócs, and Jairo Patiño.
+2016. {``Edge Effect on Epiphyllous Bryophytes in {Taita} {Hills}
+Fragmented Afromontane Forests.''} \emph{Journal of Bryology} 38 (1):
+33--46. \url{https://doi.org/10.1179/1743282015Y.0000000015}.
+
+\bibitem[\citeproctext]{ref-martiniMicroclimaConfortoTermico2015}
+Martini, Angeline, and Daniela Biondi. 2015. {``Microclima e {Conforto}
+{Térmico} de Um {Fragmento} de {Floresta} {Urbana} Em {Curitiba},
+{PR}.''} \emph{Floresta e Ambiente} 22 (2): 182--93.
+\url{https://doi.org/10.1590/2179-8087.082114}.
+
+\bibitem[\citeproctext]{ref-matlackMicroenvironmentVariationForest1993}
+Matlack, Glenn R. 1993. {``Microenvironment Variation Within and Among
+Forest Edge Sites in the Eastern {United} {States}.''} \emph{Biological
+Conservation} 66 (3): 185--94.
+\url{https://doi.org/10.1016/0006-3207(93)90004-K}.
+
+\bibitem[\citeproctext]{ref-mendoncaEdgeEffectsSavanna2015}
+Mendonça, Augusto H., Cibele Russo, Antônio C. G. Melo, and Giselda
+Durigan. 2015. {``Edge Effects in Savanna Fragments: A Case Study in the
+Cerrado.''} \emph{Plant Ecology \& Diversity} 8 (4): 493--503.
+\url{https://doi.org/10.1080/17550874.2015.1014068}.
+
+\bibitem[\citeproctext]{ref-do2010eficacia}
+Nascimento, Marcio Irias do, Fábio Poggiani, Giselda Durigan, Antonio
+Francisco Iemma, and Demóstenes Ferreira da Silva Filho. 2010.
+{``Eficácia de Barreira de Eucaliptos Na Contenção Do Efeito de Borda Em
+Fragmento de Floresta Subtropical No Estado de {São} {Paulo}, {Brasil}
+{The} Effectiveness of {Eucalyptus} Barrier in Containing the Edge
+Effect on a Subtropical Forest Fragment in the State of {São} {Paulo},
+{Brazil}.''} \emph{Scientia Florestalis} 38: 191--203.
+
+\bibitem[\citeproctext]{ref-newmarkTanzanianForestEdge}
+Newmark, William D. n.d. {``Tanzanian {Forest} {Edge} {Microclimatic}
+{Gradients}: {Dynamic} {Patterns}.''}
+
+\bibitem[\citeproctext]{ref-pedroso-de-moraesEdgeEffectOrchids}
+Pedroso-de-Moraes, Cristiano, Lígia Eleonor Prezzi, Thiago de
+Souza-Leal, Thiago Fernandes Canonici, Olavo Raymundo Jr, and Paulo
+Silveira. n.d. {``Edge {Effect} on {Orchids} of a {Fragment} of
+{Semi}-{Deciduous} {Seasonal} {Forest} in the {Southeast} of
+{Brazil}.''}
+
+\bibitem[\citeproctext]{ref-pereira2014edge}
+Pereira, AF de N, IAA da Silva, ACP Santiago, ICL Barros, et al. 2014.
+{``Edge Effects on Fern Community in an {Atlantic} {Forest} Remnant
+({Bonito}, {Pernambuco}, {Brazil}).''} \emph{Interciencia} 39 (4):
+281--87.
+
+\bibitem[\citeproctext]{ref-pinheiro2013annual}
+Pinheiro, Marayana Prado, Josafá Amaral de Oliveira Filho, Solange
+França, André Márcio Amorim, and Marcelo Schramm Mielke. 2013. {``Annual
+Variation in Canopy Openness, Air Temperature and Humidity in the
+Understory of Three Forested Sites in Southern {Bahia} {State},
+{Brazil}.''} \emph{Ciência Florestal} 23: 107--16.
+
+\bibitem[\citeproctext]{ref-pintoLandscapeAttributesDrive2010}
+Pinto, Severino R. R., Gabriel Mendes, André M. M. Santos, Mateus
+Dantas, Marcelo Tabarelli, and Felipe P. L. Melo. 2010. {``Landscape
+{Attributes} {Drive} {Complex} {Spatial} {Microclimate} {Configuration}
+of {Brazilian} {Atlantic} {Forest} {Fragments}.''} \emph{Tropical
+Conservation Science} 3 (4): 389--402.
+\url{https://doi.org/10.1177/194008291000300404}.
+
+\bibitem[\citeproctext]{ref-pohlmanEdgeEffectsLinear2007}
+Pohlman, Catherine L., Stephen M. Turton, and Miriam Goosem. 2007.
+{``Edge {Effects} of {Linear} {Canopy} {Openings} on {Tropical} {Rain}
+{Forest} {Understory} {Microclimate}.''} \emph{Biotropica} 39 (1):
+62--71. \url{http://www.jstor.org/stable/30045485}.
+
+\bibitem[\citeproctext]{ref-pohlmanTemporalVariationMicroclimatic2009}
+---------. 2009. {``Temporal Variation in Microclimatic Edge Effects
+Near Powerlines, Highways and Streams in {Australian} Tropical
+Rainforest.''} \emph{Agricultural and Forest Meteorology} 149 (1):
+84--95. \url{https://doi.org/10.1016/j.agrformet.2008.07.003}.
+
+\bibitem[\citeproctext]{ref-rajpar2015bird}
+Rajpar, MN, and M Zakaria. 2015. {``Bird Abundance and Its Relationship
+with Microclimate and Habitat Variables in Open-Area and Shrub Habitats
+in {Selangor}, {Peninsular} {Malaysia}.''} \emph{JAPS: Journal of Animal
+\& Plant Sciences} 25 (1).
+
+\bibitem[\citeproctext]{ref-ramosMicroclimateAtlanticForest2006}
+Ramos, Flavio Nunes, and Flavio Antonio Maës Santos. 2006.
+{``Microclimate of {Atlantic} Forest Fragments: Regional and Local Scale
+Heterogeneity.''} \emph{Brazilian Archives of Biology and Technology} 49
+(6): 935--44. \url{https://doi.org/10.1590/S1516-89132006000700011}.
+
+\bibitem[\citeproctext]{ref-renhornGrowthVitalityEpiphytic1997}
+Renhorn, Karl-Erik, Per-Anders Esseen, Kristin Palmqvist, and Bodil
+Sundberg. 1997. {``Growth and {Vitality} of {Epiphytic} {Lichens}. {I}.
+{Responses} to {Microclimate} Along a {Forest} {Edge}-{Interior}
+{Gradient}.''} \emph{Oecologia} 109 (1): 1--9.
+\url{http://www.jstor.org/stable/4221485}.
+
+\bibitem[\citeproctext]{ref-reynosoHerbivoryDamageOak2007}
+Reynoso, Juan Antonio, and Guadalupe Williams-Linera. 2007. {``Herbivory
+Damage on Oak Seedlings at the Edge of Cloud Forest Fragments.''}
+\emph{Botanical Sciences}, no. 80 (June): 29--34.
+\url{https://doi.org/10.17129/botsci.1743}.
+
+\bibitem[\citeproctext]{ref-santos-barreraRoleMatrixedgeDynamics2011}
+Santos-Barrera, Georgina, and Nicolás Urbina-Cardona. 2011. {``The Role
+of the Matrix-Edge Dynamics of Amphibian Conservation in Tropical
+Montane Fragmented Landscapes.''} \emph{Revista Mexicana de
+Biodiversidad} 82 (2).
+\url{https://doi.org/10.22201/ib.20078706e.2011.2.463}.
+
+\bibitem[\citeproctext]{ref-savilaaksoMicroclimateTreeCommunity2009}
+Savilaakso, Sini, Jenny Koivisto, Timo O. Veteli, and Heikki Roininen.
+2009. {``Microclimate and {Tree} {Community} {Linked} to {Differences}
+in {Lepidopteran} {Larval} {Communities} Between {Forest} {Fragments}
+and {Continuous} {Forest}.''} \emph{Diversity and Distributions} 15 (2):
+356--65. \url{http://www.jstor.org/stable/20532103}.
+
+\bibitem[\citeproctext]{ref-silvaComparacaoEntreParametros2010}
+Silva, Valéria Teodoro Da, Paulo Souza Medri, Talita Parpinelli
+Ferracin, Edmilson Bianchini, José Marcelo Domingues Torezan, and José
+Antonio Pimenta. 2010. {``Comparação Entre Parâmetros Abióticos e a
+Estrutura Florestal de Um Fragmento de Floresta e Um Reflorestamento
+Abandonado de Eucalipto ({Eucalyptus} Saligna {Smith}) No Parque
+Ecológico Da {Klabin}, {Telêmaco} {Borba}/{PR}.''} \emph{Semina:
+Ciências Biológicas e Da Saúde} 31 (1): 37.
+\url{https://doi.org/10.5433/1679-0367.2010v31n1p37}.
+
+\bibitem[\citeproctext]{ref-desiqueiraUSINGVARIANCESMICROCLIMATE}
+Siqueira, Ludmila P de, Mário Basílio de Matos, Dalva M Silva Matos,
+Maria Isabel G Braz, and Leonardo Silva-Lima. n.d. {``{USING} {THE}
+{VARIANCES} {OF} {MICROCLIMATE} {VARIABLES} {TO} {DETERMINE} {EDGE}
+{EFFECTS} {IN} {SMALL} {ATLANTIC} {RAIN} {FOREST} {FRAGMENTS},
+{SOUTH}-{EASTERN} {BRAZIL}.''}
+
+\bibitem[\citeproctext]{ref-sizerResponsesWoodyPlant1999}
+Sizer, Nigel, and Edmund V. J. Tanner. 1999. {``Responses of Woody Plant
+Seedlings to Edge Formation in a Lowland Tropical Rainforest,
+{Amazonia}.''} \emph{Biological Conservation} 91 (2-3): 135--42.
+\url{https://doi.org/10.1016/S0006-3207(99)00076-2}.
+
+\bibitem[\citeproctext]{ref-stevensInfluenceEdgeSmall1998}
+Stevens, S. M., and T. P. Husband. 1998. {``The Influence of Edge on
+Small Mammals: Evidence from {Brazilian} {Atlantic} Forest Fragments.''}
+\emph{Biological Conservation} 85 (1-2): 1--8.
+\url{https://doi.org/10.1016/S0006-3207(98)00003-2}.
+
+\bibitem[\citeproctext]{ref-031051937}
+Turton, S. M., and H. J. Freiburger. 1997. {``Edge and Aspect Effects on
+the Microclimate of a Small Tropical Forest Remnant on the {Atherton}
+{Tableland}, Northeastern {Australia}.''} \emph{Laurance, W F,
+Bierregaard, R O, Jr Tropical Forest Remnants Ecology, Management, and
+Conservation of Fragmented Communities}, 45--54.
+\url{https://eurekamag.com/research/031/051/031051937.php}.
+
+\bibitem[\citeproctext]{ref-urbina-cardonaHerpetofaunaDiversityMicroenvironment2006}
+Urbina-Cardona, J. Nicolás, Mario Olivares-Pérez, and Víctor Hugo
+Reynoso. 2006. {``Herpetofauna Diversity and Microenvironment Correlates
+Across a Pasture--Edge--Interior Ecotone in Tropical Rainforest
+Fragments in the {Los} {Tuxtlas} {Biosphere} {Reserve} of {Veracruz},
+{Mexico}.''} \emph{Biological Conservation} 132 (1): 61--75.
+\url{https://doi.org/10.1016/j.biocon.2006.03.014}.
+
+\bibitem[\citeproctext]{ref-vanwilgenburgPatternsArthropodAbundance2001}
+Van Wilgenburg, Steve L., Daniel F. Mazerolle, and Keith A. Hobson.
+2001. {``Patterns of Arthropod Abundance, Vegetation, and Microclimate
+at Boreal Forest Edge and Interior in Two Landscapes: {Implications} for
+Forest Birds.''} \emph{Écoscience} 8 (4): 454--61.
+\url{https://doi.org/10.1080/11956860.2001.11682675}.
+
+\bibitem[\citeproctext]{ref-wattsHydrologyFireRegulate2015}
+Watts, Adam C., and Leda N. Kobziar. 2015. {``Hydrology and Fire
+Regulate Edge Influence on Microclimate in Wetland Forest Patches.''}
+\emph{Freshwater Science} 34 (4): 1383--93.
+\url{https://doi.org/10.1086/683534}.
+
+\bibitem[\citeproctext]{ref-williams-lineraMicroenvironmentFloristicsDifferent1998}
+Williams-Linera, G., V. Domínguez-Gastelú, and M. E. García-Zurita.
+1998. {``Microenvironment and {Floristics} of {Different} {Edges} in a
+{Fragmented} {Tropical} {Rainforest}.''} \emph{Conservation Biology} 12
+(5): 1091--1102. \url{http://www.jstor.org/stable/2387582}.
+
+\bibitem[\citeproctext]{ref-williams-lineraVegetationStructureEnvironmental1990}
+Williams-Linera, Guadalupe. 1990. {``Vegetation {Structure} and
+{Environmental} {Conditions} of {Forest} {Edges} in {Panama}.''}
+\emph{The Journal of Ecology} 78 (2): 356.
+\url{https://doi.org/10.2307/2261117}.
+
+\bibitem[\citeproctext]{ref-wrightEdgeMicroclimateTemperate2010}
+Wright, Thomas E., Sabine Kasel, Michael Tausz, and Lauren T. Bennett.
+2010. {``Edge Microclimate of Temperate Woodlands as Affected by
+Adjoining Land Use.''} \emph{Agricultural and Forest Meteorology} 150
+(7-8): 1138--46. \url{https://doi.org/10.1016/j.agrformet.2010.04.016}.
+
+\bibitem[\citeproctext]{ref-ylisirnioWoodlandKeyHabitats2016}
+Ylisirniö, Anna-Liisa, Mikko Mönkkönen, Ville Hallikainen, Taina
+Ranta-Maunus, and Jari Kouki. 2016. {``Woodland Key Habitats in
+Preserving Polypore Diversity in Boreal Forests: {Effects} of Patch
+Size, Stand Structure and Microclimate.''} \emph{Forest Ecology and
+Management} 373 (August): 138--48.
+\url{https://doi.org/10.1016/j.foreco.2016.04.042}.
+
+\bibitem[\citeproctext]{ref-youngMicroclimateVegetationEdge1994}
+Young, Andrew, and Neil Mitchell. 1994. {``Microclimate and Vegetation
+Edge Effects in a Fragmented Podocarp-Broadleaf Forest in {New}
+{Zealand}.''} \emph{Biological Conservation} 67 (1): 63--72.
+\url{https://doi.org/10.1016/0006-3207(94)90010-8}.
+
+\end{CSLReferences}
+
+\end{document}

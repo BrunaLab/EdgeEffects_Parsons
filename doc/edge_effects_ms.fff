@@ -1,0 +1,140 @@
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+[H]
+
+{\centering \includegraphics[width=0.8\linewidth,]{images/temp_00012}
+
+}
+
+\caption{Model for how land history, usage, and stochastic events affect the environment of remaining forest fragments. These in turn interact with fragment area and isolation to result in impacts on plants and animals.}\label{fig:model}
+\end{figure*}
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+[H]
+
+{\centering \includegraphics[width=0.95\linewidth,]{images/temp_00017}
+
+}
+
+\caption{Map of studies on abiotic edge effects worldwide.}\label{fig:map}
+\end{figure*}
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+[H]
+
+{\centering \includegraphics[width=0.8\linewidth,]{images/biome_hist_eb}
+
+}
+
+\caption{Number of studies by biome}\label{fig:hist-biome}
+\end{figure*}
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+[H]
+
+{\centering \includegraphics[width=0.9\linewidth,]{images/temp_00013}
+
+}
+
+\caption{Sampling design used for measuring abiotic edge effects.}\label{fig:sampling}
+\end{figure*}
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+[H]
+
+{\centering \includegraphics[width=0.8\linewidth,]{images/duration_hist_eb}
+
+}
+
+\caption{Histogram of the duration of environmental data collection is studies of edge effects. Blue line: mean no. of days, Red line: median no. of days}\label{fig:duration}
+\end{figure*}
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+[H]
+
+{\centering \includegraphics[width=0.8\linewidth,]{images/temp_00016}
+
+}
+
+\caption{Results Summary Table}\label{fig:summary-table}
+\end{figure*}
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+[H]
+
+{\centering \includegraphics[width=0.8\linewidth,]{images/temp_00010}
+
+}
+
+\caption{Percent difference in abiotic measurment (vs. interior point) at different distances from the habitat edge. Lines indicated LOESS.}\label{fig:perc-dist-all}
+\end{figure*}
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+[H]
+
+{\centering \includegraphics[width=0.8\linewidth,]{images/temp_00011}
+
+}
+
+\caption{Soil moisture measurements by matrix type.}\label{fig:soil-moisture}
+\end{figure*}
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+[H]
+
+{\centering \includegraphics[width=0.8\linewidth,]{images/temp_00009}
+
+}
+
+\caption{Varaince in abiotic measurment (vs. interior point) at different distances from the habitat edge. Lines indicated LOESS fits.}\label{fig:var-dist-all}
+\end{figure*}
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+[H]
+
+{\centering \includegraphics[width=0.8\linewidth,]{images/temp_00009}
+
+}
+
+\caption{Comparison of lienar vs. loess fits of abiotic changes vs. distance from the edge. Linear models shown with confidence intervals; linear regressions on natural log-transformed abiotic measurements and distances and bounded by a 95\% confidence interval of the interior points with a blue horizontal line. The CI was calculated with the means of known standard errors in the dataset. With this method, edge effects only begin to be significant at the point where the regression and CI intersect.}\label{fig:lin-v-loess}
+\end{figure*}
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+[H]
+
+{\centering \includegraphics[width=0.8\linewidth,]{images/temp_00006}
+
+}
+
+\caption{Linear models with confidence intervals.}\label{fig:lin-dist}
+\end{figure*}
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+[H]
+
+{\centering \includegraphics[width=0.8\linewidth,]{images/temp_00005}
+
+}
+
+\caption{LOESS curves by biome - TEMPERATE}\label{fig:loess-temp}
+\end{figure*}
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+[H]
+
+{\centering \includegraphics[width=0.8\linewidth,]{images/temp_00006}
+
+}
+
+\caption{LOESS curves by biome - TROPICAL}\label{fig:loess-trop}
+\end{figure*}
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+[H]
+
+{\centering \includegraphics[width=0.8\linewidth,]{images/temp_00002}
+
+}
+
+\caption{Gradient visualization of the intensity of abiotic edge effects.}\label{fig:gradient}
+\end{figure*}
