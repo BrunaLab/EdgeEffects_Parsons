@@ -1,0 +1,54 @@
+﻿Article.ID,data column,data,notes
+18,Lead.Author ,Didham,
+18,Year,2014,
+18,Journal,PS,Pacific.Science
+18,"focal area of research (ecophysiology, population ecology, community ecology ecosystem ecology, animal behavior)",ecophysiology,
+18,focal.subject.of.research,abiotic,
+18,biome,Southern.beech.Forest,
+18,ecosystem,Temperate.Rain.Forest,
+18,Country,New.Zeland,
+18,state,NA,
+18,Municipality,Hurunui.district,
+18,field station,Glynn.Wye.high.country.station,
+18,Latitude,NA,
+18,Longitude,NA,
+18,habitat.1,Fragment,
+18,habitat.2,Open.area,Control
+18,replicates.habitat.1,1,0.2.4.8.16.m
+18,replicates.habitat.2,1,
+18,sampling.dist.hab1,transect,
+18,sampling.dist.hab2,NA,
+18,points.per.replicate.hab1,NA,
+18,points.per.replicate.hab2,1,
+18,dist.btwn.pts.1,variable,0m.2m.4m.6m.8m.16m
+18,dist.btwn.pts.2,NA,
+18,layout,perpendicular,
+18,var.1,PFD,photon.flux.density
+18,var.2,AT,air.temperature
+18,var.3,RH,relative.humidity
+18,var.4,VPD,vapor.pressure.deficit
+18,equip.var.1,datalogger,
+18,equip.var.2,datalogger,Hobo.H08.series.Onset.Computer.Corporation
+18,equip.var.3,datalogger,Hobo.H08.series.Onset.Computer.Corporation
+18,equip.var.4,Tetens.Equation,
+18,start.date,2003/02/28,
+18,end.date,2003/03/01,
+18,time.var.1,NA,
+18,time.var.2,NA,
+18,time.var.3,NA,
+18,comparisons,Contrast.edge.microclimate.gradients.among.different.vertical.strata,
+18,comparisons,NA,
+18,comparisons,NA,
+18,statistical analysis?,Y,
+18,statistica methods,GLMMs,
+18,significant differences observed (Y/N),Y,
+18,summary of results,At.increased.significantly.at.ground.level.relative.to.the.control,
+18,summary of results,The.reverse.occurred.in.the.upper.canopy,
+18,summary of results,VPD.ground.level.twice.as.high.in.the.FI.as.at.the.FE.the.reverse.was.true.for.upper.forest,
+18,summary of results,Edge.responses.were.higly.nonlinear,
+18,summary of results,NA,
+18,data archived? Y/N,N,
+18,data archive ,NA,
+18,accession number,NA,
+18,was cited before,Y,
+18,citations,4,

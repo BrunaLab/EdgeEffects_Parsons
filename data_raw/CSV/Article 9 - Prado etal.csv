@@ -1,0 +1,51 @@
+﻿Article.ID,data column,data,notes
+9,Lead.Author ,Pinheiro,
+9,Year,2013,
+9,Journal,CF,Ciência.Florestal
+9,"focal area of research (ecophysiology, population ecology, community ecology ecosystem ecology, animal behavior)",ecophysiology,
+9,focal.subject.of.research,abiotic,
+9,biome,Atlantic Forest,
+9,ecosystem,NA,
+9,Country,Brazil,
+9,state,Bahia,
+9,Municipality,NA,
+9,field station,RST,Reserva.particular.do.patrimônio.natural.serra.do.teimoso
+9,Latitude,15°12’S,
+9,Longitude,39°29’W,
+9,habitat.1,mature.forest,mature.forest
+9,habitat.2,agroforestry,Rustic.cacao.agroforestry.system.cabruca(CB)
+9,habitat.3,open.area,open.area
+9,replicates.habitat.1,2,
+9,replicates.habitat.2,1,
+9,replicates.habitat.3,1,
+9,sampling.dist.hab1,transect,
+9,sampling.dist.hab2,transect,
+9,reps.per.dist.1,NA,
+9,reps.per.dist.2,NA,
+9,dist.btwn.pts.1,NA,
+9,dist.btwn.pts.2,NA,
+9,layout,fixed.plot,
+9,var.1,AT,air.temperature
+9,var.2,RH,relative.humidity
+9,var.3,VPD,vapor.pressure.deficit
+9,equip.var.1,datalogger,Hobo.H8.Pro.Series.Onset
+9,equip.var.2,datalogger,Hobo.H8.Pro.Series.Onset
+9,equip.var.3,Landsberg.equation,
+9,start.date,2005-04-01,A.problem.caused.the.loss.of.data.between.2005/11.2006/1
+9,end.date,2006-06-30,
+9,time.var.1,30min,reading.at.30.minute.intervals
+9,time.var.2,30min,reading.at.30.minute.intervals
+9,time.var.3,NA,
+9,comparisons,Annual.variation.in.the.understory.microclimate,
+9,statistical analysis?,Y,
+9,statistica methods,NA,nonlinear.models
+9,significant differences observed (Y/N),N,
+9,summary of results,Temp.always.lower.inside.the.mature.forest(RST),
+9,summary of results,Temp.higher.inside.cabruca.and.open.area,
+9,summary of results,Changes.in.climatic.variables.are.in.accordance.with.floristic.composition.along.the.altitude.gradient,
+9,summary of results,values.of.TA.and.VPD.in.CB.closest.to.values.measured.in.OA.than.to.values.inside.forest,
+9,data archived? Y/N,N,
+9,data archive ,NA,
+9,accession number,NA,
+9,was cited before,Y,
+9,citations,3,

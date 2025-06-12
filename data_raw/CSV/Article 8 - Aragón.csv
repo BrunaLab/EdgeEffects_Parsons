@@ -1,0 +1,55 @@
+﻿Article.ID,data column,data,notes
+8,Lead.Author ,Aragon,
+8,Year,2015,
+8,Journal,EJF,European.journal.of.forest.research
+8,"focal area of research (ecophysiology, population ecology, community ecology ecosystem ecology, animal behavior)",community.ecology,
+8,focal.subject.of.research,plant,
+8,biome,temperate.broadleaf.forest,
+8,ecosystem,beech.forest,
+8,Country,Spain,
+8,state,NA,
+8,Municipality,NA,
+8,field station,Sistema.Central.Range.in.Spain,
+8,Latitude,41° 15’N,
+8,Longitude,3° 23’W,
+8,habitat.1,Pine.plantation,South.orientation
+8,habitat.2,Semi.deciduous.oak.forest,South.orientation
+8,habitat.3,shrubland,North.and.south.orientation
+8,replicates.habitat.1,1,
+8,replicates.habitat.2,1,
+8,replicates.habitat.3,1,
+8,sampling.dist.hab1,transect,
+8,sampling.dist.hab2,transect,
+8,sampling.dist.hab3,transect,
+8,reps.per.dist.1,3,5.50.100m
+8,reps.per.dist.2,3,
+8,reps.per.dist.3,3,
+8,dist.btwn.pts.1,variable,5m.50m.100m
+8,dist.btwn.pts.2,variable,5m.50m.100m
+8,dist.btwn.pts.3,variable,5m.50m.100m
+8,layout,multiple.perpendicular,
+8,var.1,AT,air.temperature
+8,var.2,RH,relative.humidity
+8,equip.var.1,datalogger,HOBO.pro.V2
+8,equip.var.2,datalogger,HOBO.pro.V3
+8,start.date,2009-10-01,
+8,end.date,2011-11-30,
+8,time.var.1,once.per.hour,
+8,time.var.2,once.per.hour,
+8,comparisons,Understand.response.of.epiphytic.communitites.to.fores.edge,
+8,comparisons,EE.evaluated.on.different.aspects.on.the.same.matrix,
+8,comparisons,possible.implications.of.the.nature.of.the.matrix,
+8,statistical analysis?,N ,
+8,statistica methods,NA,
+8,significant differences observed (Y/N),N ,
+8,summary of results,replacement.of.FI.spp.with.generalist.light-demanding.spp.at.FE,
+8,summary of results,Shrubs-bordered.edges.showeed.the.strongst.influence.on.epiphytic.composition,
+8,summary of results,high.spp.dissimilarity.btw.FE.and.FI,
+8,summary of results,EE.mitigated.when.patch.surrounded.by.other.forests,
+8,summary of results,dissimilarity.of.spp.composition.btw.Edgeinterior.higher.in.the.south,
+8,summary of results,EE.is.modulated.by.the.physiognomy.of.the.surrounding.matrix.and.orientation.of.the.forest,
+8,data archived? Y/N,N,
+8,data archive ,N,
+8,accession number,NA,
+8,was cited before,Y,
+8,citations,2,

@@ -1,0 +1,55 @@
+﻿Article.ID,data column,data,notes
+2,Lead.Author ,Ewers,
+2,Year,2013,
+2,Journal,Plos.one,
+2,"focal area of research (ecophysiology, population ecology, community ecology ecosystem ecology, animal behavior)",ecophysiology,
+2,focal.subject.of.research,abiotic,
+2,biome,Atlantic.Forest,
+2,ecosystem,Fragments.of.secondary.forest,
+2,Country,Brazil,
+2,state,NA,
+2,Municipality,NA,
+2,field station,Private.land,
+2,Latitude,23°50’ S,
+2,Longitude,47°20’ W,
+2,habitat.1,Pasture,
+2,habitat.2,Fragment,
+2,replicates.habitat.1,2,
+2,replicates.habitat.2,8,
+2,sampling.dist.hab1,transect,
+2,sampling.dist.hab2,transect,
+2,reps.per.dist.1,4,
+2,reps.per.dist.2,4,
+2,dist.btwn.pts.1,variable,1m.4m.16m.64m
+2,dist.btwn.pts.2,variable,1m.4m.16m.64m
+2,layout,perpendicular,
+2,var.1,ST,soil.temperature
+2,var.2,SFT,surface.temperature
+2,var.3,AT,air.temperature
+2,equip.var.1,datalogger,iButton DS1922L-F5.dataloggers
+2,equip.var.2,datalogger,iButton DS1922L-F5.dataloggers
+2,equip.var.3,datalogger,iButton DS1922L-F5.dataloggers
+2,start.date,2009-09-01,YYY-MM-DDThh:mm:ss. 
+2,end.date,2010-08-31,YYY-MM-DDThh:mm:ss. 
+2,time.var.1,3,1 measurement every 3 hours
+2,time.var.2,3,1 measurement every 3 hours
+2,time.var.3,3,1 measurement every 3 hours
+2,comparisons,Temp.Past.Xtemp.fragment(buffering),every 30 sec; recorded avg every 30 min
+2,comparisons,temp.height.Strata.within.fragments,
+2,comparisons,Edge.effect,
+2,statistical analysis?,ANCOVA,
+2,statistica methods,paired t-tests,
+2,significant differences observed (Y/N),Y,
+2,summary of results,temperature.bellow.ground.more.stable.inside.the.forest,
+2,summary of results,buffering.effect.reduced.near.the.forest.edge,
+2,summary of results,buffering.effect.larger.in.summer,
+2,summary of results,BE.stronger.below.ground.than.one.metre.above.ground,
+2,summary of results,Edge.effect.extending.up.to.20m.inside.the.forest,
+2,data archived? Y/N,Y,
+2,data archive ,Plos.one,
+2,accession number,http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0058093,
+2,was cited before,Y,
+2,citations,30,
+,,,
+,,,
+,,,

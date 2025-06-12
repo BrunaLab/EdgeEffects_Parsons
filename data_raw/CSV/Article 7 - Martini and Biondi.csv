@@ -1,0 +1,63 @@
+﻿Article.ID,data column,data,notes
+7,Lead.Author ,Martini,
+7,Year,2015,
+7,Journal,FEA,Floresta.e.ambiente
+7,"focal area of research (ecophysiology, population ecology, community ecology ecosystem ecology, animal behavior)",ecophysiology,
+7,focal.subject.of.research,abiotic,
+7,biome,Atlantic.Forest,
+7,ecosystem,araucaria.moist.forest,
+7,Country,Brasil,
+7,state,Parana,
+7,Municipality,Curitiba,
+7,field station,CampusIII.UFPR.,Federal.Universit.Of.Parana
+7,Latitude,25°27’12'' S,
+7,Longitude,49° 14’ 24'' W,
+7,habitat.1,Frag.UF,fragment.of.urban.forest
+7,habitat.2,area.with.lawn,
+7,habitat.3,parking.lot,
+7,habitat.4,within.a.pine.grove,
+7,replicates.habitat.1,1,
+7,replicates.habitat.2,1,
+7,replicates.habitat.3,1,
+7,replicates.habitat.4,1,
+7,sampling.dist.hab1,point,
+7,sampling.dist.hab2,point,
+7,sampling.dist.hab3,point,
+7,sampling.dist.hab4,point,
+7,reps.per.dist.1,1,
+7,reps.per.dist.2,1,
+7,reps.per.dist.3,1,
+7,reps.per.dist.4,1,
+7,dist.btwn.pts.1,NA,
+7,dist.btwn.pts.2,NA,
+7,dist.btwn.pts.3,NA,
+7,dist.btwn.pts.4,NA,
+7,layout,fixed.point,
+7,var.1,AT ,air.temperature
+7,var.2,RH,rel.humid
+7,var.3,WS,wind.speed
+7,var.4,GT,global.temp
+7,equip.var.1,TGD-400,Medidor.de.estresse.térmico
+7,equip.var.2,TGD-401,
+7,equip.var.3,TGD-402,
+7,equip.var.4,TGD-403,
+7,start.date,2011-09-01,
+7,end.date,2012-06-30,
+7,time.var.1,2hours.per.day,total.of.120.measurements.per.day
+7,time.var.2,2hours.per.day,
+7,time.var.3,2hours.per.day,
+7,time.var.4,2hours.per.day,
+7,comparisons,MicroclimexThermal.comfort,
+7,statistical analysis?,Y,
+7,statistica methods,test.SNK,Student.Newman.Keuls
+7,significant differences observed (Y/N),Y,
+7,summary of results,Urban.forest.fragment.statistically.different.from.the.other.environments,
+7,summary of results,Frag.Uf.showed.Higher.values.of.AT,
+7,summary of results,Frag.Uf.showed.lower.values.of.RU,
+7,summary of results,Pine.grove.stable.microclimate.conditions,
+7,summary of results,Both.Forest.and.Pine.Grove.more.thermally.comfortable.microclimates,
+7,data archived? Y/N,N,
+7,data archive ,NA,
+7,accession number,NA,
+7,was cited before,N ,
+7,citations,0,

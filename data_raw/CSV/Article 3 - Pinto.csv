@@ -1,0 +1,54 @@
+﻿Article.ID,data column,data,notes
+3,Lead.Author ,Pinto,
+3,Year,2010,
+3,Journal,TCS,
+3,"focal area of research (ecophysiology, population ecology, community ecology ecosystem ecology, animal behavior)",ecophysiology,
+3,focal.subject.of.research,abiotic,
+3,biome,Atlantic.forest,
+3,ecosystem,Lowland.forest,
+3,Country,Brazil,
+3,state,Alagoas,
+3,Municipality,Usina.Serra.Grande,
+3,field station,Private.land,
+3,Latitude,8°30’S,
+3,Longitude,35°50’W,
+3,habitat.1,forest.fragment,
+3,habitat.2,NA,
+3,replicates.habitat.1,10,
+3,replicates.habitat.2,NA,
+3,sampling.dist.hab1,random.points,ranging.2.6.to.600m
+3,sampling.dist.hab2,NA,
+3,reps.per.dist.1,10.to.39,
+3,reps.per.dist.2,NA,
+3,dist.btwn.pts.1,random,
+3,dist.btwn.pts.2,NA,
+3,layout,random.points,
+3,var.1,LI,Light.Incidence
+3,var.2,AT,Air.temperature
+3,var.3,RH,Relative.humidity
+3,var.4,VPD,Vapor.pressure.deficit(VPD)
+3,equip.var.1,Nikon.Coolpix.990,hemispherical.photographs.taken.1m.above.ground
+3,equip.var.2,Thermo.hygrometer,
+3,equip.var.3,Thermo.hygrometer,MTH-1380-Winner
+3,equip.var.4,NA,
+3,start.date,2005-10-01,
+3,end.date,2006-04-30,
+3,time.var.1,NA,
+3,time.var.2,once.per.day,1 measurement per day during the dry season between 12:00-13:00
+3,time.var.3,NA,
+3,time.var.4,once.per.day,1 measurement per day during the dry season between 12:00-13:00
+3,statistical analysis?,Y,
+3,statistica methods,ANOVA,
+3,statistica methods,GLMM,
+3,significant differences observed (Y/N),Y,
+3,summary of results,Microclimate.strongly.differed.from.open.matrix,
+3,summary of results,Average.deviation.of.10%.in.AT.RH.VPD,
+3,summary of results,Fragment.MCconditions.are.highly.variable.and.spatially.complex,
+3,summary of results,EE.greatly.affected.by.matrix,
+3,summary of results,larger.fragments.and.more.connected.deviated.less.from.matrix,
+3,summary of results,microclimate.condition.are.spatially.complex,
+3,data archived? Y/N,N,
+3,data archive ,NA,tropical.conservation.science
+3,accession number,NA,
+3,was cited before,Y,
+3,citations,13,
